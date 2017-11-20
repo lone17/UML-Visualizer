@@ -11,7 +11,6 @@ import java.io.*;
 public class Project extends Directory {
 
     private final LinkedList<SourceFile> sourceFiles; // all source files in the project
-    private final String name;
 
     /**
      * Project Constructor
@@ -20,7 +19,6 @@ public class Project extends Directory {
      */
     public Project(String path) {
         super(path);
-        name = new File(path).getName();
         sourceFiles = new LinkedList<SourceFile>();
 
         for (String filePath : allSourceFilePaths)
@@ -42,7 +40,7 @@ public class Project extends Directory {
      * @return project's name
      */
     public String getName(){
-        return name;
+        return self.getName();
     }
 
     /**
