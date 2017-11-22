@@ -7,9 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.BorderLayout;
 
+import com.mxgraph.util.*;
+
 public class App {
 	private static MainWindow mainWindow;
 	private static TreePanel treePanel;
+	private static JScrollPane drawPanel;
 	private static JTextArea text;
 
 	public static MainWindow getMainWindow() {
@@ -31,11 +34,14 @@ public class App {
 	public static void run() {
 		mainWindow = MainWindow.getMainWindowInstance();
 		treePanel = new TreePanel();
+		drawPanel = new DrawPanel();
 		text = new JTextArea();
+		text.setPreferredSize(new Dimension(1400, 30));
 
 
-		mainWindow.add(treePanel.getScrollPane(), BorderLayout.WEST);
-		mainWindow.add(text, BorderLayout.CENTER);
+		mainWindow.add(treePanel, BorderLayout.WEST);
+		mainWindow.add(drawPanel, BorderLayout.CENTER);
+		mainWindow.add(text, BorderLayout.SOUTH);
 //		JPanel drawPanel = new JPanel();
 //		drawPanel.setSize(new Dimension(300, 400));
 //		mainWindow.add(drawPanel, BorderLayout.SOUTH);
