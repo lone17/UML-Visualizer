@@ -86,7 +86,7 @@ public class Parser {
         if (tmp.length == 1) return res;
 
         if (tmp.length == 2)
-            if (input.matches("\\bextends\\b"))
+            if (input.matches(".+ extends .+"))
                 res[1] = tmp[1].trim();
             else
                 res[2] = tmp[1].trim().replace(",", " ");
@@ -94,7 +94,6 @@ public class Parser {
             res[1] = tmp[1].trim();
             res[2] = tmp[2].trim().replace(",", " ");
         }
-
 
         return res;
     }

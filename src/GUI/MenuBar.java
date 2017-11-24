@@ -3,6 +3,8 @@ package GUI;
 import javax.swing.*;
 
 import GUI.tree.TreePanel;
+import parser.Project;
+import parser.SourceFile;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -29,11 +31,16 @@ public class MenuBar extends JMenuBar{
 				if (chooser.showOpenDialog(App.getMainWindow()) == JFileChooser.APPROVE_OPTION) {
 					File f = chooser.getSelectedFile();
 					String selectedPath = f.getAbsolutePath();
-					App.getMainWindow().remove(App.getTreePanel());
-					App.setTreePanel(new TreePanel(selectedPath));
-					App.getMainWindow().add(App.getTreePanel(), BorderLayout.WEST);
+					App.setProject(new Project(selectedPath));
+//					for (SourceFile file : App.getProject().getSourceFiles()) {
+//						System.out.println(file.getContainedClass());
+//						System.out.println("************************");
+//					}
+					App.getTreePanel().draw(App.getProject());
+					App.getDrawPanel().draw(App.getProject());
 					App.getText().append("Loaded " + App.getTreePanel().getLoadedFilesCount()
 							                     + " file(s) from " + selectedPath + "\n");
+
 					App.getMainWindow().revalidate();
 					App.getMainWindow().repaint();
 				}

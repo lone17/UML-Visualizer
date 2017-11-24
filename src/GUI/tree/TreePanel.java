@@ -11,21 +11,11 @@ public class TreePanel extends JScrollPane{
 
     public TreePanel() {
         super();
-
-        init(new DefaultMutableTreeNode("Empty"));
+        initContent(new DefaultMutableTreeNode("Empty"));
 
     }
 
-    public TreePanel(String path) {
-        super();
-
-        ProjectNode root = new ProjectNode(new Project(path));
-        loadedFilesCount = root.getSourceFileCount();
-
-        init(root);
-    }
-
-    private void init(DefaultMutableTreeNode root) {
+    private void initContent(DefaultMutableTreeNode root) {
         JTree tree = new JTree(root);
 
         tree.setRootVisible(true);
@@ -33,6 +23,12 @@ public class TreePanel extends JScrollPane{
 
         setViewportView(tree);
         setPreferredSize(new Dimension(200, 800));
+    }
+
+    public void draw(Project project) {
+        ProjectNode root = new ProjectNode(project);
+        loadedFilesCount = root.getSourceFileCount();
+        initContent(root);
     }
 
     public int getLoadedFilesCount(){

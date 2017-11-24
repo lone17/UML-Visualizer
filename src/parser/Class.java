@@ -68,6 +68,26 @@ public class Class extends Component {
     }
 
     /**
+     * Check wether this Class has any attribute
+     *
+     * @return true if there is any attribute contained in this Class
+     *         false otherwise
+     */
+    public boolean hasAttribute() {
+        return attributes.size() != 0;
+    }
+
+    /**
+     * Check wether this Class has any method
+     *
+     * @return true if there is any method contained in this Class
+     *         false otherwise
+     */
+    public boolean hasMethod() {
+        return methods.size() != 0;
+    }
+
+    /**
      * Add a method
      *
      * @param method the method to be added
@@ -155,8 +175,8 @@ public class Class extends Component {
      * Local testing
      */
     public static void main(String[] args) {
-        String s = "public class Class extends UMLComponent implements a1, a2 {";
+        String s = "public class Class extends UMLComponent {";
         Class test = new Class(s);
-        System.out.println(test);
+        System.out.println(test.getBaseClass());
     }
 }

@@ -1,18 +1,17 @@
 package GUI;
 
-import GUI.*;
 import GUI.tree.*;
+import parser.Project;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.BorderLayout;
 
-import com.mxgraph.util.*;
-
 public class App {
+	private static Project project;
 	private static MainWindow mainWindow;
 	private static TreePanel treePanel;
-	private static JScrollPane drawPanel;
+	private static DrawPanel drawPanel;
 	private static JTextArea text;
 
 	public static MainWindow getMainWindow() {
@@ -23,12 +22,28 @@ public class App {
 		return treePanel;
 	}
 
+	public static DrawPanel getDrawPanel(){
+		return drawPanel;
+	}
+
 	public static JTextArea getText(){
 		return text;
 	}
 
+	public static Project getProject() {
+		return project;
+	}
+
 	public static void setTreePanel(TreePanel treePanel){
 		App.treePanel = treePanel;
+	}
+
+	public static void setDrawPanel(DrawPanel drawPanel){
+		App.drawPanel = drawPanel;
+	}
+
+	public static void setProject(Project project) {
+		App.project = project;
 	}
 
 	public static void run() {
@@ -42,10 +57,6 @@ public class App {
 		mainWindow.add(treePanel, BorderLayout.WEST);
 		mainWindow.add(drawPanel, BorderLayout.CENTER);
 		mainWindow.add(text, BorderLayout.SOUTH);
-//		JPanel drawPanel = new JPanel();
-//		drawPanel.setSize(new Dimension(300, 400));
-//		mainWindow.add(drawPanel, BorderLayout.SOUTH);
-//		mainWindow.pack();
 	}
 
 	public static void main(String[] args){
