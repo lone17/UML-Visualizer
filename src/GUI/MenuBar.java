@@ -1,5 +1,6 @@
 package GUI;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import GUI.tree.TreePanel;
@@ -9,7 +10,9 @@ import parser.SourceFile;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 public class MenuBar extends JMenuBar{
 	private static MenuBar menu = new MenuBar();
@@ -43,6 +46,7 @@ public class MenuBar extends JMenuBar{
 
 					App.getMainWindow().revalidate();
 					App.getMainWindow().repaint();
+
 				}
 			}
 		});

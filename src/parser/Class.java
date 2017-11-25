@@ -154,11 +154,14 @@ public class Class extends Component {
 
         s += type + " " + name + "\n";
 
-        if (baseClass != null) s += name + " ---> " + baseClass + "\n";
+        if (baseClass != null) s += name + " ---|> " + baseClass + "\n";
 
         if (baseInterfaces != null)
             for (String item : baseInterfaces)
-                s += name + " ---> " + item + "\n";
+                s += name + " ---|> " + item + "\n";
+
+        for (Attribute item : attributes)
+            s += name + " <>--- " + item.getType() + "\n";
 
         s += "\n" + "Attributes: " + "\n";
         for (Attribute item : attributes)

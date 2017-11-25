@@ -22,7 +22,7 @@ public class TreePanel extends JScrollPane{
         tree.setShowsRootHandles(true);
 
         setViewportView(tree);
-        setPreferredSize(new Dimension(200, 800));
+        setPreferredSize(new Dimension(300, 800));
     }
 
     public void draw(Project project) {

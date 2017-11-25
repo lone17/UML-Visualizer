@@ -3,13 +3,18 @@ package GUI;
 import GUI.tree.*;
 import parser.Project;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.BorderLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class App {
 	private static Project project;
 	private static MainWindow mainWindow;
+	private static MenuBar menuBar;
 	private static TreePanel treePanel;
 	private static DrawPanel drawPanel;
 	private static JTextArea text;
@@ -48,15 +53,18 @@ public class App {
 
 	public static void run() {
 		mainWindow = MainWindow.getMainWindowInstance();
+		menuBar = MenuBar.getMenuBarInstance();
 		treePanel = new TreePanel();
 		drawPanel = new DrawPanel();
 		text = new JTextArea();
 		text.setPreferredSize(new Dimension(1400, 30));
 
 
+		mainWindow.setJMenuBar(menuBar);
 		mainWindow.add(treePanel, BorderLayout.WEST);
 		mainWindow.add(drawPanel, BorderLayout.CENTER);
 		mainWindow.add(text, BorderLayout.SOUTH);
+
 	}
 
 	public static void main(String[] args){
