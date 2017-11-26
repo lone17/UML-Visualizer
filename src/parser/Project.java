@@ -44,6 +44,22 @@ public class Project extends Directory {
     }
 
     /**
+     * Returns a String representation
+     *
+     * @return a String representation of this Project
+     */
+    @Override
+    public String toString() {
+        String s = "# Project loaded from: " + self.getAbsolutePath();
+        for (SourceFile file : sourceFiles) {
+            s += "-----------------------------------------------\n";
+            s += file.getContainedClass().toString() + "\n";
+        }
+
+        return s;
+    }
+
+    /**
      * Local testing
      */
     public static void main(String[] args) {
@@ -67,9 +83,6 @@ public class Project extends Directory {
         //     System.out.println(e);
         // }
 
-        for (SourceFile file : uml.sourceFiles) {
-            System.out.println("********************************************");
-            System.out.println(file.getContainedClass());
-        }
+        System.out.println(uml);
     }
 }

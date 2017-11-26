@@ -1,6 +1,9 @@
 package GUI;
 
 import java.awt.*;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -54,6 +57,7 @@ public class DrawPanel extends JScrollPane {
 		//		diag.setDynamicLinks(true);
 		//		diag.setBackBrush(new SolidBrush(Color.white));
 		diagView.setZoomFactor(85);
+		addZoomListener();
 	}
 
 	private HashMap<String, ContainerNode> diagramNodes = new HashMap<>();
@@ -202,6 +206,20 @@ public class DrawPanel extends JScrollPane {
 					link.setRetainForm(true);
 				}
 		}
+	}
+
+	private void addZoomListener() {
+		diagView.addMouseWheelListener(new MouseWheelListener(){
+			@Override
+			public void mouseWheelMoved(MouseWheelEvent e){
+				int notches = e.getWheelRotation();
+				if (e.getScrollType() == MouseWheelEvent.WHEEL_UNIT_SCROLL) {
+					float zoomFactor = diagView.getZoomFactor();
+					if (zoomFactor <= 20 && notches > 0) return;
+					diagView.setZoomFactor(zoomFactor - notches);
+				}
+			}
+		});
 	}
 
 	public Diagram diag;
