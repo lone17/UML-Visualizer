@@ -40,7 +40,7 @@ public class Method extends Component {
         len = parts.length;
         parametersType = parts[0];
         for (int i = 2; i < len; i += 2)
-            parametersType += ", " + parts[i];
+            parametersType += "," + parts[i];
     }
 
     /**
@@ -50,6 +50,13 @@ public class Method extends Component {
     @Override
     public boolean isMethod() {
         return true;
+    }
+
+    /**
+     * @return a string for brief presentation on tree panel
+     */
+    public String presentation() {
+        return name + "(" + parametersType + "): " + type;
     }
 
     /**

@@ -6,7 +6,6 @@ import javax.swing.tree.TreeCellRenderer;
 import java.awt.*;
 import java.net.URL;
 
-
 public class ComponentTreeCellRenderer implements TreeCellRenderer{
 
     private JLabel label;

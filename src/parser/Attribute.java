@@ -61,6 +61,13 @@ public class Attribute extends Component {
     }
 
     /**
+     * @return a string for brief presentation on tree panel
+     */
+    public String presentation() {
+        return name + ": " + type;
+    }
+
+    /**
      * @return a string representation of Method for printing
      */
     @Override

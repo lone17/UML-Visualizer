@@ -1,24 +1,12 @@
 package GUI;
 
 import java.awt.*;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
-import java.awt.geom.Dimension2D;
-import java.io.File;
-import java.io.IOException;
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 
 import javax.swing.JScrollPane;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.xml.sax.SAXException;
 
 import com.mindfusion.drawing.*;
 import com.mindfusion.diagramming.*;
@@ -160,7 +148,7 @@ public class DrawPanel extends JScrollPane {
 				DiagramLink link = diagram.getFactory().createDiagramLink(parent, child);
 				link.setBaseShape(ArrowHeads.Triangle);
 				link.setHeadShape(ArrowHeads.None);
-				link.setBaseBrush(new SolidBrush(new Color(168, 255, 199)));
+				link.setBaseBrush(new SolidBrush(new Color(132, 238, 125)));
 				link.setDynamic(true);
 				link.setShadowBrush(new SolidBrush(Color.white));
 				link.setLocked(true);
@@ -173,7 +161,7 @@ public class DrawPanel extends JScrollPane {
 					DiagramLink link = diagram.getFactory().createDiagramLink(parent, child);
 					link.setBaseShape(ArrowHeads.Triangle);
 					link.setHeadShape(ArrowHeads.None);
-					link.setBaseBrush(new SolidBrush(new Color(168, 255, 199)));
+					link.setBaseBrush(new SolidBrush(new Color(132, 238, 125)));
 					link.setDynamic(true);
 					link.setShadowBrush(new SolidBrush((Color.white)));
 					link.setLocked(true);
@@ -187,7 +175,7 @@ public class DrawPanel extends JScrollPane {
 					DiagramLink link = diagram.getFactory().createDiagramLink(parent, child);
 					link.setBaseShape(ArrowHeads.Rhombus);
 					link.setHeadShape(ArrowHeads.None);
-					link.setBaseBrush(new SolidBrush(new Color(202, 199, 255)));
+					link.setBaseBrush(new SolidBrush(new Color(255, 208, 149)));
 					link.setDynamic(true);
 					link.setShadowBrush(new SolidBrush(Color.white));
 					link.setLocked(true);

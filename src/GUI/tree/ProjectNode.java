@@ -10,7 +10,7 @@ public class ProjectNode extends DefaultMutableTreeNode {
     private int sourceFileCount;
 
     public ProjectNode(Project project) {
-        super(project.getName());
+        super(new ComponentDetail(project.getName(), "Icon\\root.png"));
 
         LinkedList<SourceFile> sourceFiles = project.getSourceFiles();
         sourceFileCount = sourceFiles.size();
