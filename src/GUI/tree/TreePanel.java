@@ -18,6 +18,7 @@ public class TreePanel extends JScrollPane{
     private void initContent(DefaultMutableTreeNode root) {
         JTree tree = new JTree(root);
 
+        tree.setCellRenderer(new ComponentTreeCellRenderer());
         tree.setRootVisible(true);
         tree.setShowsRootHandles(true);
 

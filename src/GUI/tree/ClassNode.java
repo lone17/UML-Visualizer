@@ -7,17 +7,25 @@ import parser.Method;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 public class ClassNode extends DefaultMutableTreeNode {
+    private DefaultMutableTreeNode attributes, methods;
 
     public ClassNode(Class aClass) {
-        super(aClass.getName());
+        super(new ComponentDetail(aClass.getName(), "Icon\\"
+                                                    + (aClass.isAbstract() ? "abstractClass.png" : "class.png")));
+
+        attributes = new DefaultMutableTreeNode("Attributes:");
+        methods = new DefaultMutableTreeNode("Methods:");
 
         for (Attribute atts : aClass.getAttributes()) {
-            this.add(new AttributeNode(atts));
+            attributes.add(new AttributeNode(atts));
         }
 
         for (Method method : aClass.getMethods()) {
-            this.add(new MethodNode(method));
+            methods.add(new MethodNode(method));
         }
+
+        this.add(attributes);
+        this.add(methods);
     }
 
 

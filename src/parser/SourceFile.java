@@ -20,22 +20,52 @@ public class SourceFile {
      * @param filePath the path to a source file
      */
     public SourceFile(String filePath) {
-        File self;
         try {
+            File self;
             self = new File(filePath);
             name = self.getName();
             path = self.getAbsolutePath();
+
             String line;
             BufferedReader br = new BufferedReader(new FileReader(filePath));
-            while ((line = br.readLine()) != null) {
+
+            while ((line = br.readLine()) != null)
                 text += Parser.removeQuote(line) + "\n";
-            }
+
             br.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         text = Parser.preprocess(text);
+        initContainedClass();
+    }
+
+    public SourceFile(InputStream stream, String path) {
+        try {
+            path = path;
+            name = path.replace("/", "\"").substring(path.lastIndexOf("\\") + 1, path.length());
+
+            String line;
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
+            while ((line = br.readLine()) != null)
+                text += Parser.removeQuote(line) + "\n";
+
+            br.close();
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        text = Parser.preprocess(text);
+        initContainedClass();
+    }
+
+    /**
+     * Init the contain class
+     */
+    private void initContainedClass() {
 
         // text = text.replaceAll("\\{(?:.|[\\r|\\n])*?\\}", "");
         // text = text.replaceAll("[\\n\\r;]", " ").trim();
@@ -85,7 +115,7 @@ public class SourceFile {
      * Local testing
      */
     public static void main(String[] args) {
-        SourceFile test = new SourceFile("D:\\Downloads\\K53CC\\r50\\src\\com\\tavanduc\\uml\\gui\\Relationship.java");
+        SourceFile test = new SourceFile("E:\\Code\\OOP\\UML-Parser\\SourceFile.java");
         System.out.println(test.containedClass);
         // System.out.println(test.text);
     }

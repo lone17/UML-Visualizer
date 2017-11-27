@@ -1,7 +1,10 @@
 package parser;
 
+import java.util.Enumeration;
 import java.util.LinkedList;
 import java.io.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 /**
  * class Project represent a java project
@@ -21,8 +24,22 @@ public class Project extends Directory {
         super(path);
         sourceFiles = new LinkedList<SourceFile>();
 
-        for (String filePath : allSourceFilePaths)
-            sourceFiles.add(new SourceFile(filePath));
+        if (!path.endsWith(".zip")) {
+            for (String filePath : allSourceFilePaths)
+                sourceFiles.add(new SourceFile(filePath));
+        }
+        else try {
+            ZipFile file = new ZipFile(path);
+            Enumeration<? extends ZipEntry> entries = file.entries();
+            while (entries.hasMoreElements()) {
+                ZipEntry entry = entries.nextElement();
+                if (entry.getName().endsWith(".java"))
+                    sourceFiles.add(new SourceFile(file.getInputStream(entry),
+                                                          file.getName() + "\\" + entry.getName()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -35,22 +52,13 @@ public class Project extends Directory {
     }
 
     /**
-     * Return the name of the Project
-     *
-     * @return project's name
-     */
-    public String getName(){
-        return self.getName();
-    }
-
-    /**
      * Returns a String representation
      *
      * @return a String representation of this Project
      */
     @Override
     public String toString() {
-        String s = "# Project loaded from: " + self.getAbsolutePath();
+        String s = "# Project loaded from: " + self.getAbsolutePath() + "\n";
         for (SourceFile file : sourceFiles) {
             s += "-----------------------------------------------\n";
             s += file.getContainedClass().toString() + "\n";
@@ -67,7 +75,7 @@ public class Project extends Directory {
         if (args.length != 0)
             uml = new Project(args[0]);
         else
-            uml = new Project("E:\\Code\\OOP\\UML-Visualizer");
+            uml = new Project("E:\\Code\\OOP\\Parser.zip");
 
         // try {
         //     FileWriter writer = new FileWriter("file1.txt");

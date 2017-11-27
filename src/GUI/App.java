@@ -60,7 +60,7 @@ public class App {
 		text.setPreferredSize(new Dimension(1400, 30));
 
 
-		mainWindow.setJMenuBar(menuBar);
+		mainWindow.add(menuBar, BorderLayout.NORTH);
 		mainWindow.add(treePanel, BorderLayout.WEST);
 		mainWindow.add(drawPanel, BorderLayout.CENTER);
 		mainWindow.add(text, BorderLayout.SOUTH);

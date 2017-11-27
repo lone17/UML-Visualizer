@@ -6,6 +6,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 public class AttributeNode extends DefaultMutableTreeNode{
     public AttributeNode(Attribute attribute) {
-        super(attribute.toString());
+        super(new ComponentDetail(attribute.toString(), "Icon\\Attribute\\"
+                                                       + attribute.getAccessModifier() + ".png"));
     }
 }

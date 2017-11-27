@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.awt.geom.Dimension2D;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -32,86 +33,80 @@ public class DrawPanel extends JScrollPane {
 
 
 	public void draw(Project project) {
-		diag = new Diagram();
-		diagView = new DiagramView(diag);
+		diagram = new Diagram();
+		diagramView = new DiagramView(diagram);
 
-		setViewportView(diagView);
+		setViewportView(diagramView);
 
 		initContent(project);
 
-		//		diag.getNodeEffects().add(new GlassEffect());
-		TableNodeStyle nodeStyle = diag.getTableNodeStyle();
-		nodeStyle.setBrush(new SolidBrush(new Color(101, 100, 99)));
-		nodeStyle.setShadowBrush(new SolidBrush(Color.white));
+		diagram.getNodeEffects().add(new AeroEffect());
+		TableNodeStyle tableNodeStyle = diagram.getTableNodeStyle();
+		tableNodeStyle.setBrush(new SolidBrush(new Color(5, 97, 127)));
 
-		diagView.setBehavior(Behavior.PanAndModify);
-		diagView.setModificationStart(ModificationStart.AutoHandles);
+		ContainerNodeStyle containerNodeStyle = diagram.getContainerNodeStyle();
+//		containerNodeStyle.setBrush(new SolidBrush(new Color(169, 238, 152)));
+		containerNodeStyle.setShadowBrush(new SolidBrush(Color.white));
 
-		diag.setSelectAfterCreate(false);
-		//		diag.setLinkCascadeOrientation(Orientation.Auto);
-		//		diag.setLinkShape(LinkShape.Polyline);
-		diag.setFont(new Font("Arial", Font.PLAIN, 5));
-		diag.setEnableLanes(true);
-		diag.setLinkRouter(new GridRouter());
-		diag.setLinkCrossings(LinkCrossings.Cut);
-		//		diag.setDynamicLinks(true);
-		//		diag.setBackBrush(new SolidBrush(Color.white));
-		diagView.setZoomFactor(85);
+		diagramView.setBehavior(Behavior.PanAndModify);
+		diagramView.setModificationStart(ModificationStart.AutoHandles);
+
+//		diagram.setBackBrush(new SolidBrush(new Color(17, 24, 23)));
+		diagram.setSelectAfterCreate(false);
+		diagram.setFont(new Font("Arial", Font.PLAIN, 5));
+		diagram.setEnableLanes(true);
+		diagram.setLinkRouter(new GridRouter());
+		diagram.setLinkCrossings(LinkCrossings.Cut);
+		diagramView.setZoomFactor(70);
 		addZoomListener();
 	}
 
 	private HashMap<String, ContainerNode> diagramNodes = new HashMap<>();
 	private void initContent(Project project) {
-		diag.clearAll();
+		diagram.clearAll();
 
 		for (SourceFile file : project.getSourceFiles()) {
 			Class currentClass = file.getContainedClass();
-			ContainerNode container = diag.getFactory().createContainerNode(0, 0, 0, 0);
-			TableNode node = diag.getFactory().createTableNode(0, 0, 0, 0);
-//			TableNode node = new TableNode();
-//			diag.add(node);
-//			node.setBounds(10, 10, 30, 10);
+			ContainerNode container = diagram.getFactory().createContainerNode(0, 15, 0, 0);
+			TableNode node = diagram.getFactory().createTableNode(0, 15, 0, 0);
 
 			node.redimTable(1, 0);
 			node.setLocked(true);
 			node.setCellFrameStyle(CellFrameStyle.Simple);
-//			node.setCaptionBrush(new SolidBrush(Color.white));
-//			node.setCaptionFormat(new TextFormat(Align.Center, Align.Center));
 			node.setCaptionHeight(0);
 			node.setCaption(null);
 
 			Cell c = node.getCell(0, node.addRow());
 			c.setRowSpan(2);
-//			c.setBrush(new SolidBrush(Color.white));
 			c.setTextColor(Color.white);
 			c.setFont(new Font("Arial", Font.PLAIN, 4));
-			c.setText("        Attributes:");
+			c.setText("Attributes:");
+			c.setTextPadding(new Thickness(6, 1, 50, 1));
 			c.setTextFormat(new TextFormat(Align.Near, Align.Center));
 			node.addRow();
 
 			for (Attribute a : currentClass.getAttributes()) {
 				c = node.getCell(0, node.addRow());
 				c.setTextPadding(new Thickness(8, 2, 5, 2));
+//				c.setBrush(new SolidBrush(new Color(193, 255, 243)));
 				c.setBrush(new SolidBrush(Color.white));
 				c.setText(a.toString());
 				c.setTextFormat(new TextFormat(Align.Near, Align.Center));
 			}
 
-//			node.addRow();
-//			if (currentClass.hasAttribute()) node.addRow();
-
 			c = node.getCell(0, node.addRow());
 			c.setRowSpan(2);
-//			c.setBrush(new SolidBrush(Color.white));
 			c.setTextColor(Color.white);
 			c.setFont(new Font("Arial", Font.PLAIN, 4));
-			c.setText("        Methods:");
+			c.setText("Methods:");
+			c.setTextPadding(new Thickness(6, 1, 50, 1));
 			c.setTextFormat(new TextFormat(Align.Near, Align.Center));
 			node.addRow();
 
 			for (Method m : currentClass.getMethods()) {
 				c = node.getCell(0, node.addRow());
 				c.setTextPadding( new Thickness(8, 2, 5, 2));
+//				c.setBrush(new SolidBrush(new Color(193, 255, 243)));
 				c.setBrush(new SolidBrush(Color.white));
 				c.setText(m.toString());
 				c.setTextFormat(new TextFormat(Align.Near, Align.Center));
@@ -119,10 +114,8 @@ public class DrawPanel extends JScrollPane {
 
 			node.addRow();
 
-//			node.setEnabledHandles(AdjustmentHandles.Move);
 			node.setObstacle(true);
 			node.resizeToFitText(true);
-
 
 			container.setId(file.getContainedClass().getName());
 			container.setAllowAddChildren(false);
@@ -132,28 +125,25 @@ public class DrawPanel extends JScrollPane {
 			container.setMargin(0);
 			container.add(node);
 			container.updateBounds(true);
-			container.setObstacle(true);
+			container.setObstacle(false);
 
 			diagramNodes.put(container.getCaption(), container);
-			diag.add(container);
+			diagram.add(container);
 		}
 
 		initLinks();
 
 		TreeLayout layout = new TreeLayout();
 		layout.setLinkStyle(TreeLayoutLinkType.Straight);
-		layout.setLevelDistance(25);
-		layout.setNodeDistance(20);
-		layout.arrange(diag);
+		layout.setLevelDistance(50);
+		layout.setNodeDistance(50);
+		layout.arrange(diagram);
 
-		diag.resizeToFitItems(10);
-		diag.setAutoResize(AutoResize.AllDirections);
+		diagram.resizeToFitItems(10);
+		diagram.setAutoResize(AutoResize.AllDirections);
 	}
 
 	private void initLinks() {
-//		for (DiagramNode n : diag.getNodes())
-//			System.out.println(((TableNode) n).getId());
-//		LinkedList<SourceFile> files = App.getProject().getSourceFiles();
 
 		Class currentClass;
 		DiagramNode parent;
@@ -163,17 +153,15 @@ public class DrawPanel extends JScrollPane {
 		for (SourceFile file : App.getProject().getSourceFiles()) {
 			currentClass = file.getContainedClass();
 			child = diagramNodes.get(currentClass.getName());
-//			System.out.println(currentClass);
-//			System.out.println("************************");
 
 			if (currentClass.getBaseClass() != null) {
 				parent = diagramNodes.get(currentClass.getBaseClass());
 				if (parent == null) continue;
-				DiagramLink link = diag.getFactory().createDiagramLink(parent, child);
+				DiagramLink link = diagram.getFactory().createDiagramLink(parent, child);
 				link.setBaseShape(ArrowHeads.Triangle);
 				link.setHeadShape(ArrowHeads.None);
+				link.setBaseBrush(new SolidBrush(new Color(168, 255, 199)));
 				link.setDynamic(true);
-//				link.setAutoRoute(true);
 				link.setShadowBrush(new SolidBrush(Color.white));
 				link.setLocked(true);
 			}
@@ -182,25 +170,25 @@ public class DrawPanel extends JScrollPane {
 				for (String interfaceName : currentClass.getBaseInterfaces()) {
 					parent = diagramNodes.get(interfaceName);
 					if (parent == null) continue;
-					DiagramLink link = diag.getFactory().createDiagramLink(parent, child);
+					DiagramLink link = diagram.getFactory().createDiagramLink(parent, child);
 					link.setBaseShape(ArrowHeads.Triangle);
 					link.setHeadShape(ArrowHeads.None);
+					link.setBaseBrush(new SolidBrush(new Color(168, 255, 199)));
 					link.setDynamic(true);
-//					link.setAutoRoute(true);
-					link.setShadowBrush(new SolidBrush(Color.white));
+					link.setShadowBrush(new SolidBrush((Color.white)));
 					link.setLocked(true);
 				}
 
 			parent = child;
 			if (currentClass.hasAttribute())
 				for (Attribute att : currentClass.getAttributes()) {
-					child = diag.findNodeById(att.getType());
+					child = diagram.findNodeById(att.getType());
 					if (child == null) continue;
-					DiagramLink link = diag.getFactory().createDiagramLink(parent, child);
+					DiagramLink link = diagram.getFactory().createDiagramLink(parent, child);
 					link.setBaseShape(ArrowHeads.Rhombus);
 					link.setHeadShape(ArrowHeads.None);
+					link.setBaseBrush(new SolidBrush(new Color(202, 199, 255)));
 					link.setDynamic(true);
-//					link.setAutoRoute(true);
 					link.setShadowBrush(new SolidBrush(Color.white));
 					link.setLocked(true);
 					link.setRetainForm(true);
@@ -208,20 +196,24 @@ public class DrawPanel extends JScrollPane {
 		}
 	}
 
+	public Diagram getDiagram() {
+		return diagram;
+	}
+
 	private void addZoomListener() {
-		diagView.addMouseWheelListener(new MouseWheelListener(){
+		diagramView.addMouseWheelListener(new MouseWheelListener(){
 			@Override
 			public void mouseWheelMoved(MouseWheelEvent e){
 				int notches = e.getWheelRotation();
 				if (e.getScrollType() == MouseWheelEvent.WHEEL_UNIT_SCROLL) {
-					float zoomFactor = diagView.getZoomFactor();
+					float zoomFactor = diagramView.getZoomFactor();
 					if (zoomFactor <= 20 && notches > 0) return;
-					diagView.setZoomFactor(zoomFactor - notches);
+					diagramView.setZoomFactor(zoomFactor - notches);
 				}
 			}
 		});
 	}
 
-	public Diagram diag;
-	private DiagramView diagView;
+	private Diagram diagram;
+	private DiagramView diagramView;
 }

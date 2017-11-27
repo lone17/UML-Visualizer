@@ -55,6 +55,16 @@ public class Directory {
             allSourceFilePaths.addAll(dir.allSourceFilePaths);
     }
 
+
+    /**
+     * Return the name of the Directory
+     *
+     * @return directory's name
+     */
+    public String getName(){
+        return self.getName();
+    }
+
     /**
      * Return all subdirectories and files
      *
