@@ -1,22 +1,22 @@
 package GUI.tree;
 
 import parser.Attribute;
-import parser.Class;
+import parser.Interface;
 import parser.Method;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
-public class InterfaceNode extends TreeNode {
+public class InterfaceNode extends DefaultMutableTreeNode {
 	private DefaultMutableTreeNode attributes, methods;
 
-	public InterfaceNode(Class aInterface) {
-		super(aInterface.getName(), "Icon\\interface.png");
+	public InterfaceNode(Interface aInterface) {
+		super(new ComponentDetail(aInterface.getName(), "Icon\\interface.png"));
 
-				attributes = new DefaultMutableTreeNode("Attributes:");
+		attributes = new DefaultMutableTreeNode("Attributes:");
 		methods = new DefaultMutableTreeNode("Methods:");
 
-		for (Attribute atts : aInterface.getAttributes()) {
-			attributes.add(new AttributeNode(atts));
+		for (Attribute attribute : aInterface.getAttributes()) {
+			attributes.add(new AttributeNode(attribute));
 		}
 
 		for (Method method : aInterface.getMethods()) {

@@ -99,7 +99,7 @@ public class Interface extends Component {
      *
      * @return all contained attributes
      */
-    public LinkedList<Attribute> getAttibutes() {
+    public LinkedList<Attribute> getAttributes() {
         return attributes;
     }
 	/**

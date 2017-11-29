@@ -11,8 +11,9 @@ public class Class extends Component {
     
     private String baseClass; // parent class
     private String[] baseInterfaces; // implemented interfaces
-    private LinkedList<Method> methods; // contianed methods
+    private LinkedList<Method> methods; // contained methods
     private LinkedList<Attribute> attributes; // contained attributes
+    private HashSet<String> associations; // all association components
 
     /**
      * Class Constructor
@@ -45,8 +46,9 @@ public class Class extends Component {
         if (declaration[2] != null)
             baseInterfaces = declaration[2].split("\\s+");
 
-        methods = new LinkedList<Method>();
-        attributes = new LinkedList<Attribute>();
+        methods = new LinkedList<>();
+        attributes = new LinkedList<>();
+        associations = new HashSet<>();
     }
 
     /**
@@ -93,6 +95,7 @@ public class Class extends Component {
      * @param method the method to be added
      */
     public void addMethod(Method method) {
+        if (method == null) return;
         methods.add(method);
     }
 
@@ -102,13 +105,17 @@ public class Class extends Component {
      * @param methods the list of methods to be added
      */
     public void addAllMethods(LinkedList<Method> methods) {
-        methods.addAll(methods);
+        if (methods == null) return;
+        for (Method method : methods) {
+            if (method != null)
+                methods.add(method);
+        }
     }
 
     /**
      * Get all contained methods
      *
-     * @return all contained methods
+     * @return a LinkedList contains all methods
      */
     public LinkedList<Method> getMethods() {
         return methods;
@@ -120,7 +127,9 @@ public class Class extends Component {
      * @param att the attribute to be added
      */
     public void addAttribute(Attribute att) {
+        if (att == null) return;
         attributes.add(att);
+        associations.add(att.getType().replaceAll("[\\[<].*", ""));
     }
 
     /**
@@ -129,18 +138,33 @@ public class Class extends Component {
      * @param atts the list of attributes to be added
      */
     public void addAllAttributes(LinkedList<Attribute> atts) {
-        attributes.addAll(atts);
+        if (atts == null) return;
+        for (Attribute att : atts)
+            if (att != null) {
+                attributes.add(att);
+                associations.add(att.getType().replaceAll("[\\[<].*", ""));
+            }
     }
 
     /**
      * Return all contianed attributes
      *
-     * @return all contained attributes
+     * @return a Linkedlist contains all attributes
      */
     public LinkedList<Attribute> getAttributes() {
         return attributes;
     }
-	/**
+
+    /**
+     * Return all associations
+     *
+     * @return a HashSet contains all association components
+     */
+    public HashSet<String> getAssociations(){
+        return associations;
+    }
+
+    /**
 	 * @return a string representation of Class for printing
 	 */
 	@Override
@@ -160,8 +184,8 @@ public class Class extends Component {
             for (String item : baseInterfaces)
                 s += name + " ---|> " + item + "\n";
 
-        for (Attribute item : attributes)
-            s += name + " <>--- " + item.getType() + "\n";
+        for (String item : associations)
+            s += name + " <>--- " + item + "\n";
 
         s += "\n" + "Attributes: " + "\n";
         for (Attribute item : attributes)

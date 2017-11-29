@@ -16,8 +16,8 @@ public class ClassNode extends DefaultMutableTreeNode {
         attributes = new DefaultMutableTreeNode("Attributes:");
         methods = new DefaultMutableTreeNode("Methods:");
 
-        for (Attribute atts : aClass.getAttributes()) {
-            attributes.add(new AttributeNode(atts));
+        for (Attribute attribute : aClass.getAttributes()) {
+            attributes.add(new AttributeNode(attribute));
         }
 
         for (Method method : aClass.getMethods()) {

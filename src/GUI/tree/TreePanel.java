@@ -1,9 +1,12 @@
 package GUI.tree;
 
+import GUI.App;
 import parser.Project;
 
 import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.*;
 import java.awt.*;
 
 public class TreePanel extends JScrollPane{
@@ -16,11 +19,29 @@ public class TreePanel extends JScrollPane{
     }
 
     private void initContent(DefaultMutableTreeNode root) {
-        JTree tree = new JTree(root);
+        JTree tree = new JTree(new DefaultTreeModel(root));
 
+        DefaultTreeSelectionModel model = new DefaultTreeSelectionModel();
+        model.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+        tree.setSelectionModel(model);
         tree.setCellRenderer(new ComponentTreeCellRenderer());
         tree.setRootVisible(true);
         tree.setShowsRootHandles(true);
+        tree.setExpandsSelectedPaths(true);
+        tree.addTreeSelectionListener(new TreeSelectionListener(){
+            @Override
+            public void valueChanged(TreeSelectionEvent e) {
+                DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+                if (node == null) return;
+                TreeNode[] path = node.getPath();
+                if (node.getLevel() < 1) return;
+
+                node = (DefaultMutableTreeNode) path[1];
+                ComponentDetail nodeInfo = (ComponentDetail) node.getUserObject();
+
+                App.getDrawPanel().focusOn(nodeInfo.getName());
+            }
+        });
 
         setViewportView(tree);
         setPreferredSize(new Dimension(300, 800));

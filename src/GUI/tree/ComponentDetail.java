@@ -4,7 +4,7 @@ public class ComponentDetail {
     private String name;
     private String icon;
 
-    ComponentDetail(String name, String icon) {
+    public ComponentDetail(String name, String icon) {
         this.name = name;
         this.icon = icon;
     }

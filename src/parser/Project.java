@@ -22,7 +22,7 @@ public class Project extends Directory {
      */
     public Project(String path) {
         super(path);
-        sourceFiles = new LinkedList<SourceFile>();
+        sourceFiles = new LinkedList<>();
 
         if (!path.endsWith(".zip")) {
             for (String filePath : allSourceFilePaths)

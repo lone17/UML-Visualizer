@@ -1,10 +1,13 @@
 package GUI;
 
 import GUI.tree.*;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import parser.Project;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.plaf.ComboBoxUI;
+import javax.swing.plaf.basic.BasicComboBoxUI;
 import java.awt.*;
 import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
@@ -64,12 +67,10 @@ public class App {
 		mainWindow.add(treePanel, BorderLayout.WEST);
 		mainWindow.add(drawPanel, BorderLayout.CENTER);
 		mainWindow.add(text, BorderLayout.SOUTH);
-
 	}
 
 	public static void main(String[] args){
-//		run();
-		EventQueue.invokeLater(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				App.run();

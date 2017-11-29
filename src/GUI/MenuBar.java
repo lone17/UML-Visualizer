@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.plaf.ButtonUI;
 import javax.swing.plaf.basic.BasicButtonUI;
+import javax.swing.plaf.basic.BasicComboBoxUI;
 import javax.swing.plaf.basic.BasicMenuBarUI;
 import javax.swing.plaf.metal.MetalButtonUI;
 import javax.swing.plaf.multi.MultiMenuBarUI;
@@ -12,7 +13,9 @@ import javax.swing.plaf.synth.SynthButtonUI;
 import GUI.filter.*;
 import GUI.tree.TreePanel;
 import com.sun.java.swing.plaf.windows.WindowsRadioButtonMenuItemUI;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import parser.Directory;
+import parser.Method;
 import parser.Project;
 import parser.SourceFile;
 
@@ -24,6 +27,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class MenuBar extends JMenuBar{
 	private static MenuBar menu = new MenuBar();
@@ -31,6 +37,7 @@ public class MenuBar extends JMenuBar{
 	private JButton loadProject = new JButton("Load Project");
 	private JButton saveAsImage = new JButton("Save as Picture");
 	private JButton saveAsText = new JButton("Save as Text");
+	private JComboBox combobox;
 
 	private MenuBar() {
 		super();
@@ -53,6 +60,8 @@ public class MenuBar extends JMenuBar{
 		this.add(loadProject);
 		this.add(saveAsImage);
 		this.add(saveAsText);
+
+//		setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 	}
 
 	private void addLoadListener() {
@@ -83,7 +92,42 @@ public class MenuBar extends JMenuBar{
 					App.getMainWindow().repaint();
 
 					BufferedImage img = App.getDrawPanel().getDiagram().createImage(BufferedImage.TYPE_INT_RGB);
+
+					if(App.getProject() != null) {
+						AutoCompleteDecorator decorator;
+						ArrayList<String> items = new ArrayList<>();
+						for (SourceFile file : App.getProject().getSourceFiles()) {
+							String className = file.getContainedClass().getName();
+							items.add(className);
+							for (Method method : file.getContainedClass().getMethods())
+								items.add(method.presentation() + " | " + className);
+						}
+
+						Collections.sort(items, String.CASE_INSENSITIVE_ORDER);
+						combobox = new JComboBox(items.toArray());
+						AutoCompleteDecorator.decorate(combobox);
+						combobox.setUI(new BasicComboBoxUI());
+						add("Search", combobox);
+						combobox.setMaximumSize(new Dimension(600, 30));
+						combobox.setMaximumRowCount(4);
+						combobox.setAlignmentX(Box.RIGHT_ALIGNMENT);
+						addSearchListenner();
+					}
+					JOptionPane.showMessageDialog(App.getMainWindow(), "Loaded files: " + App.getTreePanel().getLoadedFilesCount());
 				}
+			}
+		});
+	}
+
+	private void addSearchListenner() {
+		combobox.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JComboBox box = (JComboBox) e.getSource();
+				String item = (String) box.getSelectedItem();
+				if (item.contains("|"))
+					item = item.substring(item.lastIndexOf("|") + 2, item.length());
+				App.getDrawPanel().focusOn(item);
 			}
 		});
 	}
@@ -108,14 +152,14 @@ public class MenuBar extends JMenuBar{
 				if (chooser.showDialog(App.getMainWindow(), "Save Picture") == JFileChooser.APPROVE_OPTION) {
 					String ext = "";
 
-					String discription = chooser.getFileFilter().getDescription();
-					if (discription.equals("*.jpg, *.JPG"))
+					String description = chooser.getFileFilter().getDescription();
+					if (description.equals("*.jpg, *.JPG"))
 						ext = "jpg";
-					else if (discription.equals("*.png, *.PNG"))
+					else if (description.equals("*.png, *.PNG"))
 						ext = "png";
-					else if (discription.equals("*.jpeg, *.JPEG"))
+					else if (description.equals("*.jpeg, *.JPEG"))
 						ext = "jpeg";
-					else if (discription.equals("*.bmp, *.BMP"))
+					else if (description.equals("*.bmp, *.BMP"))
 						ext = "bmp";
 					else
 						ext = "gif";
