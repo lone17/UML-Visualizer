@@ -1,7 +1,7 @@
 package GUI.tree;
 
 import GUI.App;
-import parser.Project;
+import structure.Project;
 
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
@@ -15,7 +15,10 @@ public class TreePanel extends JScrollPane{
     public TreePanel() {
         super();
         initContent(new DefaultMutableTreeNode(new ComponentDetail("Empty", "Icon\\root.png")));
-
+//        this.getHorizontalScrollBar().setBackground(new Color(90, 112, 160));
+//        this.getVerticalScrollBar().setBackground(new Color(90, 112, 160));
+//        this.getHorizontalScrollBar().setUI(new BasicScrollBarUI());
+//        this.getVerticalScrollBar().setUI(new BasicScrollBarUI());
     }
 
     private void initContent(DefaultMutableTreeNode root) {

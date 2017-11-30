@@ -1,7 +1,7 @@
-package parser;
+package structure;
 
 /**
- * class Parser represents a text parser
+ * class Parser represents a text myparser
  *
  * @author Vu Minh HIeu
  */

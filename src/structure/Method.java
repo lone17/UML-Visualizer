@@ -1,4 +1,4 @@
-package parser;
+package structure;
 
 /**
  * class Component represents a component
@@ -66,7 +66,7 @@ public class Method extends Component {
     public String toString() {
 
         String s = "";
-        if (accessModifier != null) s += accessModifier + " ";
+        if (!accessModifier.equals("default")) s += accessModifier + " ";
         if (isAbstract) s += "abstract ";
         if (isStatic)   s += "static ";
         if (isFinal)    s += "final ";

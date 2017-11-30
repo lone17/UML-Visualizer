@@ -1,4 +1,4 @@
-package parser;
+package structure;
 
 import java.util.*;
 
@@ -74,7 +74,7 @@ public class Attribute extends Component {
     public String toString() {
 
         String s = "";
-        if (accessModifier != null) s += accessModifier + " ";
+        if (!accessModifier.equals("default")) s += accessModifier + " ";
         if (isAbstract) s += "abstract ";
         if (isStatic)   s += "static ";
         if (isFinal)    s += "final ";

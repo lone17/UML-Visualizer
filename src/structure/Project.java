@@ -1,4 +1,4 @@
-package parser;
+package structure;
 
 import java.util.Enumeration;
 import java.util.LinkedList;
@@ -60,8 +60,10 @@ public class Project extends Directory {
     public String toString() {
         String s = "# Project loaded from: " + self.getAbsolutePath() + "\n";
         for (SourceFile file : sourceFiles) {
-            s += "-----------------------------------------------\n";
-            s += file.getContainedClass().toString() + "\n";
+            for (Extendable item : file.getContainedExtendables()) {
+                s += "-----------------------------------------------\n";
+                s += item.toString() + "\n";
+            }
         }
 
         return s;
@@ -75,21 +77,18 @@ public class Project extends Directory {
         if (args.length != 0)
             uml = new Project(args[0]);
         else
-            uml = new Project("E:\\Code\\OOP\\Parser.zip");
+            uml = new Project("E:\\Code\\OOP\\UML-Visualizer\\src\\structure");
 
-        // try {
-        //     FileWriter writer = new FileWriter("file1.txt");
-        //     BufferedWriter out = new BufferedWriter(writer);
-        //
-        //     for (SourceFile file : uml.sourceFiles) {
-        //         out.append("*************************************************\n");
-        //         out.append(file.getContainedClass() + "\n");
-        //     }
-        //
-        //     out.close();
-        // } catch(IOException e) {
-        //     System.out.println(e);
-        // }
+//        try {
+//            FileWriter writer = new FileWriter("C:\\Users\\Vu Minh Hieu\\Desktop\\file1.txt");
+//            BufferedWriter out = new BufferedWriter(writer);
+//
+//            out.append(uml.toString());
+//
+//            out.close();
+//        } catch(IOException e) {
+//            System.out.println(e);
+//        }
 
         System.out.println(uml);
     }

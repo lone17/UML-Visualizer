@@ -2,16 +2,10 @@ package GUI;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicButtonUI;
-import javax.swing.plaf.basic.BasicComboBoxUI;
-import javax.swing.plaf.basic.BasicMenuBarUI;
-import javax.swing.text.JTextComponent;
 
 import GUI.filter.*;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
-import parser.Method;
-import parser.Project;
-import parser.SourceFile;
+import structure.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -37,7 +31,7 @@ public class MenuBar extends JMenuBar{
 	private MenuBar() {
 		super();
 
-		this.setUI(new BasicMenuBarUI());
+//		this.setUI(new BasicMenuBarUI());
 //		this.setBackground(Color.white);
 
 		loadProject = new JButton("Load Project");
@@ -49,17 +43,14 @@ public class MenuBar extends JMenuBar{
 		saveAsImage.setFocusPainted(false);
 		saveAsText.setFocusPainted(false);
 
-		loadProject.setUI(new BasicButtonUI());
-		saveAsImage.setUI(new BasicButtonUI());
-		saveAsText.setUI(new BasicButtonUI());
+		saveAsImage.setFocusable(false);
+		saveAsText.setFocusable(false);
 
 		addLoadListener();
 		addSaveAsImageListener();
 		addSaveAsTextListener();
 
 		this.add(loadProject);
-		this.add(saveAsImage);
-		this.add(saveAsText);
 	}
 
 	private void initSearchBar() {
@@ -69,21 +60,22 @@ public class MenuBar extends JMenuBar{
 
 			items.add("  Search for classes and methods");
 			for (SourceFile file : App.getProject().getSourceFiles()) {
-				String className = file.getContainedClass().getName();
-				items.add(className);
-				for (Method method : file.getContainedClass().getMethods())
-					items.add(method.presentation() + " | " + className);
+				for (Extendable object : file.getContainedExtendables()) {
+					String name = object.getName();
+					items.add(name);
+					for (Method method : object.getMethods())
+						items.add(method.presentation() + " | " + name);
+				}
 			}
 			Collections.sort(items, String.CASE_INSENSITIVE_ORDER);
 
 			comboBox = new JComboBox(items.toArray());
-
-			comboBox.setUI(new BasicComboBoxUI());
 			comboBox.setMaximumSize(new Dimension(600, 30));
 			comboBox.setMaximumRowCount(4);
 			comboBox.setAlignmentX(Box.RIGHT_ALIGNMENT);
 			AutoCompleteDecorator.decorate(comboBox);
 			this.add(comboBox);
+			App.getDrawPanel().grabFocus();
 		}
 	}
 
@@ -110,8 +102,12 @@ public class MenuBar extends JMenuBar{
 					App.getMainWindow().revalidate();
 					App.getMainWindow().repaint();
 
+					loadProject.setFocusable(false);
+					add(saveAsImage);
+					add(saveAsText);
+
 					initSearchBar();
-					addSearchListenner();
+					addSearchListener();
 
 					JOptionPane.showMessageDialog(App.getMainWindow(), "Loaded files: " + App.getTreePanel().getLoadedFilesCount());
 				}
@@ -119,7 +115,7 @@ public class MenuBar extends JMenuBar{
 		});
 	}
 
-	private void addSearchListenner() {
+	private void addSearchListener() {
 		comboBox.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -127,13 +123,14 @@ public class MenuBar extends JMenuBar{
 				String item = (String) box.getSelectedItem();
 				if (item == null || item.equals("  Search for classes and methods")) return;
 				if (item.contains("|"))
-					item = item.substring(item.lastIndexOf("|") + 2, item.length());
+					item = item.substring(item.lastIndexOf('|') + 2, item.length());
 				App.getDrawPanel().focusOn(item);
 				comboBox.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
 					@Override
 					public void keyReleased(KeyEvent event) {
 						if (event.getKeyChar() == KeyEvent.VK_ENTER) {
 							comboBox.setSelectedItem("  Search for classes and methods");
+							App.getDrawPanel().grabFocus();
 						}
 					}
 				});

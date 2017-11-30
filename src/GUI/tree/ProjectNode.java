@@ -1,7 +1,10 @@
 package GUI.tree;
 
-import parser.Project;
-import parser.SourceFile;
+import structure.Interface;
+import structure.Extendable;
+import structure.Project;
+import structure.SourceFile;
+import structure.Class;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.LinkedList;
@@ -16,7 +19,11 @@ public class ProjectNode extends DefaultMutableTreeNode {
         sourceFileCount = sourceFiles.size();
 
         for(SourceFile file : sourceFiles) {
-            this.add(new ClassNode(file.getContainedClass()));
+            for (Extendable object : file.getContainedExtendables())
+                if (object instanceof  Class)
+                    this.add(new ClassNode((Class) object));
+                else
+                    this.add(new InterfaceNode((Interface) object));
         }
     }
 

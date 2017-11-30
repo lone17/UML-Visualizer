@@ -1,18 +1,11 @@
 package GUI;
 
 import GUI.tree.*;
-import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
-import parser.Project;
+import structure.Project;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.plaf.ComboBoxUI;
-import javax.swing.plaf.basic.BasicComboBoxUI;
 import java.awt.*;
 import java.awt.BorderLayout;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class App {
 	private static Project project;
@@ -55,6 +48,17 @@ public class App {
 	}
 
 	public static void run() {
+		try {
+			UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 		mainWindow = MainWindow.getMainWindowInstance();
 		menuBar = MenuBar.getMenuBarInstance();
 		treePanel = new TreePanel();

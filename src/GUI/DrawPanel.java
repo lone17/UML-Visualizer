@@ -3,16 +3,13 @@ package GUI;
 import java.awt.*;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
-import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
 import javax.swing.JScrollPane;
 
 import com.mindfusion.drawing.*;
 import com.mindfusion.diagramming.*;
-import parser.*;
-import parser.Class;
-
+import structure.*;
 
 public class DrawPanel extends JScrollPane {
 	public DrawPanel() {
@@ -73,43 +70,45 @@ public class DrawPanel extends JScrollPane {
 		diagram.clearAll();
 
 		for (SourceFile file : project.getSourceFiles()) {
-			Class currentClass = file.getContainedClass();
-			ContainerNode container = diagram.getFactory().createContainerNode(0, 15, 0, 0);
-			TableNode node = diagram.getFactory().createTableNode(0, 15, 0, 0);
+			for (Extendable object : file.getContainedExtendables()) {
 
-			node.redimTable(1, 0);
-			node.setLocked(true);
-			node.setCellFrameStyle(CellFrameStyle.Simple);
-			node.setCaptionHeight(0);
-			node.setCaption(null);
+				ContainerNode container = diagram.getFactory().createContainerNode(0, 15, 0, 0);
+				TableNode node = diagram.getFactory().createTableNode(0, 15, 0, 0);
 
-			addRow(node, "Attributes:", true);
-			for (Attribute attribute : currentClass.getAttributes()) {
-				addRow(node, attribute.toString(), false);
+				node.redimTable(1, 0);
+				node.setLocked(true);
+				node.setCellFrameStyle(CellFrameStyle.Simple);
+				node.setCaptionHeight(0);
+				node.setCaption(null);
+
+				addRow(node, "Attributes:", true);
+				for (Attribute attribute : object.getAttributes()) {
+					addRow(node, attribute.toString(), false);
+				}
+
+				addRow(node, "Methods:", true);
+				for (Method method : object.getMethods()) {
+					addRow(node, method.toString(), false);
+				}
+
+				node.addRow();
+
+				node.setObstacle(true);
+				node.resizeToFitText(true);
+
+				container.setId(object.getName());
+				container.setAllowAddChildren(false);
+				container.setCaption(object.getName());
+				container.setCaptionHeight(10);
+				container.setFont(new Font("Arial", Font.BOLD, 5));
+				container.setMargin(0);
+				container.add(node);
+				container.updateBounds(true);
+				container.setObstacle(false);
+
+				diagramNodes.put(container.getCaption(), container);
+				diagram.add(container);
 			}
-
-			addRow(node, "Methods:", true);
-			for (Method method : currentClass.getMethods()) {
-				addRow(node, method.toString(), false);
-			}
-
-			node.addRow();
-
-			node.setObstacle(true);
-			node.resizeToFitText(true);
-
-			container.setId(file.getContainedClass().getName());
-			container.setAllowAddChildren(false);
-			container.setCaption(file.getContainedClass().getName());
-			container.setCaptionHeight(10);
-			container.setFont(new Font("Arial", Font.BOLD, 5));
-			container.setMargin(0);
-			container.add(node);
-			container.updateBounds(true);
-			container.setObstacle(false);
-
-			diagramNodes.put(container.getCaption(), container);
-			diagram.add(container);
 		}
 	}
 
@@ -135,35 +134,37 @@ public class DrawPanel extends JScrollPane {
 
 	private void initLinks() {
 
-		Class currentClass;
 		DiagramNode parent;
 		DiagramNode child;
 
 
 		for (SourceFile file : App.getProject().getSourceFiles()) {
-			currentClass = file.getContainedClass();
-			child = diagramNodes.get(currentClass.getName());
+			for (Extendable object : file.getContainedExtendables()) {
+				child = diagramNodes.get(object.getName());
 
-			if (currentClass.getBaseClass() != null) {
-				parent = (ContainerNode) diagramNodes.get(currentClass.getBaseClass());
-				if (parent == null) continue;
-				addLink(child, parent, true);
-			}
-
-			if (currentClass.getBaseInterfaces() != null)
-				for (String interfaceName : currentClass.getBaseInterfaces()) {
-					parent = diagramNodes.get(interfaceName);
+				if (object.getBaseClass() != null) {
+					parent = (ContainerNode) diagramNodes.get(object.getBaseClass());
 					if (parent == null) continue;
 					addLink(child, parent, true);
 				}
 
-			parent = child;
-			if (currentClass.hasAttribute())
-				for (Attribute att : currentClass.getAttributes()) {
-					child = diagram.findNodeById(att.getType());
-					if (child == null) continue;
-					addLink(child, parent, false);
+				if (object.getBaseInterfaces() != null)
+					for (String interfaceName : object.getBaseInterfaces()) {
+						parent = diagramNodes.get(interfaceName);
+						if (parent == null) continue;
+						addLink(child, parent, true);
+					}
+
+				parent = child;
+				if (object.isClass() && object.hasAttribute()) {
+					structure.Class aClass = (structure.Class) object;
+					for (String item : aClass.getAssociations()) {
+						child = diagram.findNodeById(item);
+						if (child == null) continue;
+						addLink(child, parent, false);
+					}
 				}
+			}
 		}
 	}
 

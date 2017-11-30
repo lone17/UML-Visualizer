@@ -1,6 +1,6 @@
 package GUI.tree;
 
-import parser.Attribute;
+import structure.Attribute;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 

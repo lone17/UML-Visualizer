@@ -1,8 +1,8 @@
 package GUI.tree;
 
-import parser.Attribute;
-import parser.Interface;
-import parser.Method;
+import structure.Attribute;
+import structure.Interface;
+import structure.Method;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
