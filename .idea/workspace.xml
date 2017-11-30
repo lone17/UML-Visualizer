@@ -2,35 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="046186b8-eb6b-470b-b5c8-693e4aa7098c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/TreeNode.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/GUI/TestDraw.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/GUI/tree/TreeNode.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/App$1.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/App$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/App.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/App.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/com_github_javaparser_javaparser_core_3_5_3.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/TestDraw$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/TestDraw$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/TestDraw$XmlFileFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/TestDraw.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/DrawPanel$1.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/DrawPanel$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/DrawPanel.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/DrawPanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MainWindow.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MainWindow.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$1.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$2.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$3.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$4.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/ClassNode.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/ClassNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/ComponentDetail.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/ComponentDetail.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/InterfaceNode.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/InterfaceNode.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/TreePanel$1.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/TreePanel$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/TreePanel.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/TreePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/parser/Class.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/parser/Class.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/parser/Interface.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/parser/Interface.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UML-Visualizer.iml" afterPath="$PROJECT_DIR$/UML-Visualizer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/App.java" afterPath="$PROJECT_DIR$/src/GUI/App.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/DrawPanel.java" afterPath="$PROJECT_DIR$/src/GUI/DrawPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/MainWindow.java" afterPath="$PROJECT_DIR$/src/GUI/MainWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/MenuBar.java" afterPath="$PROJECT_DIR$/src/GUI/MenuBar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/tree/ClassNode.java" afterPath="$PROJECT_DIR$/src/GUI/tree/ClassNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/tree/ComponentDetail.java" afterPath="$PROJECT_DIR$/src/GUI/tree/ComponentDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/tree/InterfaceNode.java" afterPath="$PROJECT_DIR$/src/GUI/tree/InterfaceNode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/tree/TreePanel.java" afterPath="$PROJECT_DIR$/src/GUI/tree/TreePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/parser/Class.java" afterPath="$PROJECT_DIR$/src/parser/Class.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/parser/Interface.java" afterPath="$PROJECT_DIR$/src/parser/Interface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/parser/Project.java" afterPath="$PROJECT_DIR$/src/parser/Project.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,26 +49,52 @@
       <file leaf-file-name="DrawPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/DrawPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="194" column="30" lean-forward="false" selection-start-line="194" selection-start-column="30" selection-end-line="194" selection-end-column="30" />
+            <state relative-caret-position="0">
+              <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#435#436#0" expanded="true" />
+                <element signature="e#449#450#0" expanded="true" />
                 <element signature="method#addZoomListener#0;class#DrawPanel#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenuBar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/MenuBar.java">
+      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="110" column="65" lean-forward="false" selection-start-line="110" selection-start-column="65" selection-end-line="110" selection-end-column="65" />
+            <state relative-caret-position="270">
+              <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuBar.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GUI/MenuBar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="127" column="92" lean-forward="true" selection-start-line="127" selection-start-column="92" selection-end-line="127" selection-end-column="92" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4150#4373#0" expanded="true" />
+                <element signature="e#4372#4373#0" expanded="true" />
                 <element signature="method#addSaveAsImageListener#0;class#MenuBar#0" expanded="false" />
                 <element signature="method#addSaveAsTextListener#0;class#MenuBar#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Attribute.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/parser/Attribute.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="38" column="11" lean-forward="true" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,8 +112,8 @@
       <file leaf-file-name="TreePanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/tree/TreePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+            <state relative-caret-position="270">
+              <caret line="19" column="8" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -104,14 +122,14 @@
       <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1215">
-              <caret line="69" column="5" lean-forward="false" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+            <state relative-caret-position="1107">
+              <caret line="65" column="52" lean-forward="false" selection-start-line="65" selection-start-column="52" selection-end-line="65" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ComponentTreeCellRenderer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ComponentTreeCellRenderer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/tree/ComponentTreeCellRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
@@ -161,7 +179,6 @@
         <option value="$PROJECT_DIR$/file.java" />
         <option value="$PROJECT_DIR$/src/GUI/listenner/PathPicker.java" />
         <option value="$PROJECT_DIR$/src/parser/Parser.java" />
-        <option value="$PROJECT_DIR$/src/GUI/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/GUI/TestDraw.java" />
         <option value="$PROJECT_DIR$/src/GUI/filter/JPGFilter.java" />
         <option value="$PROJECT_DIR$/src/GUI/filter/PNGFilter.java" />
@@ -190,10 +207,12 @@
         <option value="$PROJECT_DIR$/src/GUI/tree/ComponentDetail.java" />
         <option value="$PROJECT_DIR$/src/GUI/tree/ComponentTreeCellRenderer.java" />
         <option value="$PROJECT_DIR$/src/Demo.java" />
-        <option value="$PROJECT_DIR$/src/GUI/tree/TreePanel.java" />
         <option value="$PROJECT_DIR$/src/GUI/App.java" />
-        <option value="$PROJECT_DIR$/src/GUI/MenuBar.java" />
+        <option value="$PROJECT_DIR$/src/GUI/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/GUI/DrawPanel.java" />
+        <option value="$PROJECT_DIR$/src/GUI/tree/TreePanel.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/src/GUI/MenuBar.java" />
       </list>
     </option>
   </component>
@@ -217,9 +236,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -227,6 +246,11 @@
             <path>
               <item name="UML-Visualizer" type="b2602c69:ProjectViewProjectNode" />
               <item name="UML-Visualizer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UML-Visualizer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UML-Visualizer" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="UML-Visualizer" type="b2602c69:ProjectViewProjectNode" />
@@ -265,6 +289,9 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -479,6 +506,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -493,7 +521,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22083333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22083333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -519,19 +547,44 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/parser/Project.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/MenuBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="550">
+          <caret line="32" column="63" lean-forward="false" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="63" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/tree/TreePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="34" column="47" lean-forward="false" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="38" column="48" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/TestDraw.java" />
     <entry file="file://$PROJECT_DIR$/src/GUI/DrawPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="68" column="43" lean-forward="true" selection-start-line="68" selection-start-column="43" selection-end-line="68" selection-end-column="43" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#435#436#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
             <element signature="method#addZoomListener#0;class#DrawPanel#0" expanded="false" />
           </folding>
         </state>
@@ -566,66 +619,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/TestDraw.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4620">
-          <caret line="242" column="28" lean-forward="false" selection-start-line="242" selection-start-column="28" selection-end-line="242" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/TestDraw.java" />
     <entry file="file://$PROJECT_DIR$/src/GUI/DrawPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#addZoomListener#0;class#DrawPanel#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/MenuBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="32" column="63" lean-forward="false" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/tree/TreePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="34" column="47" lean-forward="false" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="38" column="48" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/TestDraw.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4620">
-          <caret line="242" column="28" lean-forward="false" selection-start-line="242" selection-start-column="28" selection-end-line="242" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/DrawPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#435#436#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
             <element signature="method#addZoomListener#0;class#DrawPanel#0" expanded="false" />
           </folding>
         </state>
@@ -697,13 +699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/parser/Directory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="616">
@@ -722,13 +717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="8" column="55" lean-forward="false" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/parser/Attribute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1701">
-          <caret line="65" column="34" lean-forward="true" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -799,6 +787,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestTreeSelection.java" />
+    <entry file="file://$PROJECT_DIR$/src/GUI/tree/MyTreeSelectionModel.java" />
+    <entry file="file://$PROJECT_DIR$/src/Demo.java" />
+    <entry file="file://$PROJECT_DIR$/src/GUI/TestDraw.java" />
+    <entry file="file://$PROJECT_DIR$/src/GUI/tree/ComponentTreeCellRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/tree/ComponentDetail.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -809,80 +809,78 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="69" column="5" lean-forward="false" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+        <state relative-caret-position="1107">
+          <caret line="65" column="52" lean-forward="false" selection-start-line="65" selection-start-column="52" selection-end-line="65" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/tree/TreePanel.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/MenuBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="110" column="65" lean-forward="false" selection-start-line="110" selection-start-column="65" selection-end-line="110" selection-end-column="65" />
+        <state relative-caret-position="270">
+          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#addSaveAsImageListener#0;class#MenuBar#0" expanded="false" />
-            <element signature="method#addSaveAsTextListener#0;class#MenuBar#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/DrawPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="194" column="30" lean-forward="false" selection-start-line="194" selection-start-column="30" selection-end-line="194" selection-end-column="30" />
+        <state relative-caret-position="0">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#435#436#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
             <element signature="method#addZoomListener#0;class#DrawPanel#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestTreeSelection.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="-11259">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/tree/MyTreeSelectionModel.java">
+    <entry file="file://$PROJECT_DIR$/UML-Visualizer.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="11" column="34" lean-forward="false" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+        <state relative-caret-position="-891">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Demo.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/tree/TreePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+        <state relative-caret-position="270">
+          <caret line="19" column="8" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/TestDraw.java">
+    <entry file="file://$PROJECT_DIR$/src/parser/Attribute.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-179">
-          <caret line="57" column="31" lean-forward="false" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+        <state relative-caret-position="525">
+          <caret line="38" column="11" lean-forward="true" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/tree/ComponentTreeCellRenderer.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/MenuBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
-          <folding />
+        <state relative-caret-position="224">
+          <caret line="127" column="92" lean-forward="true" selection-start-line="127" selection-start-column="92" selection-end-line="127" selection-end-column="92" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4150#4373#0" expanded="true" />
+            <element signature="e#4372#4373#0" expanded="true" />
+            <element signature="method#addSaveAsImageListener#0;class#MenuBar#0" expanded="false" />
+            <element signature="method#addSaveAsTextListener#0;class#MenuBar#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

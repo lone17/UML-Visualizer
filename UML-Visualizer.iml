@@ -52,5 +52,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="com.github.javaparser:javaparser-core:3.5.3" level="project" />
   </component>
 </module>
