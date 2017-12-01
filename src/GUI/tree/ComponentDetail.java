@@ -6,7 +6,6 @@ package GUI.tree;
  * @author Nguyen Xuan Tung
  */
 public class ComponentDetail{
-
 	// Node's name
 	private String name;
 	// Node's icon path

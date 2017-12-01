@@ -9,9 +9,17 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.*;
 import java.awt.*;
 
-public class TreePanel extends JScrollPane{
+/**
+ * The container of the tree
+ *
+ * @author Nguyen Xuan Tung
+ */
+public class TreePanel extends JScrollPane {
     private int loadedFilesCount = 0;
 
+    /**
+     * TreePanel constructor
+     */
     public TreePanel() {
         super();
         initContent(new DefaultMutableTreeNode(new ComponentDetail("Empty", "Icon\\root.png")));
@@ -21,6 +29,11 @@ public class TreePanel extends JScrollPane{
 //        this.getVerticalScrollBar().setUI(new BasicScrollBarUI());
     }
 
+    /**
+     * Set up
+     *
+     * @param root of the tree, in this specific project, root of the tree is the project name
+     */
     private void initContent(DefaultMutableTreeNode root) {
         JTree tree = new JTree(new DefaultTreeModel(root));
 
@@ -31,7 +44,7 @@ public class TreePanel extends JScrollPane{
         tree.setRootVisible(true);
         tree.setShowsRootHandles(true);
         tree.setExpandsSelectedPaths(true);
-        tree.addTreeSelectionListener(new TreeSelectionListener(){
+        tree.addTreeSelectionListener(new TreeSelectionListener() {
             @Override
             public void valueChanged(TreeSelectionEvent e) {
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
@@ -50,13 +63,23 @@ public class TreePanel extends JScrollPane{
         setPreferredSize(new Dimension(250, App.getMainWindow().getHeight()));
     }
 
+    /**
+     * Show the tree in the tree panel
+     *
+     * @param project
+     */
     public void draw(Project project) {
         ProjectNode root = new ProjectNode(project);
         loadedFilesCount = root.getSourceFileCount();
         initContent(root);
     }
 
-    public int getLoadedFilesCount(){
+    /**
+     * Get loaded file(s) count
+     *
+     * @return number of loaded file(s)
+     */
+    public int getLoadedFilesCount() {
         return loadedFilesCount;
     }
 }
