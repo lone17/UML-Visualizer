@@ -64,13 +64,13 @@ public class App {
 		treePanel = new TreePanel();
 		drawPanel = new DrawPanel();
 		text = new JTextArea();
-		text.setPreferredSize(new Dimension(1400, 30));
+		text.setPreferredSize(new Dimension(mainWindow.getWidth(), 30));
 
 
 		mainWindow.add(menuBar, BorderLayout.NORTH);
 		mainWindow.add(treePanel, BorderLayout.WEST);
 		mainWindow.add(drawPanel, BorderLayout.CENTER);
-		mainWindow.add(text, BorderLayout.SOUTH);
+//		mainWindow.add(text, BorderLayout.SOUTH);
 	}
 
 	public static void main(String[] args){

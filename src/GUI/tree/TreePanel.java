@@ -47,7 +47,7 @@ public class TreePanel extends JScrollPane{
         });
 
         setViewportView(tree);
-        setPreferredSize(new Dimension(300, 800));
+        setPreferredSize(new Dimension(250, App.getMainWindow().getHeight()));
     }
 
     public void draw(Project project) {
