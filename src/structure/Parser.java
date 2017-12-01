@@ -1,7 +1,7 @@
 package structure;
 
 /**
- * class Parser represents a text myparser
+ * class Parser represents a text parser
  *
  * @author Vu Minh HIeu
  */
@@ -38,14 +38,13 @@ public class Parser {
      * @return the processed text
      */
     public static String removeComment(String input) {
-        String test = "/* asda /* /* */ protected boolean isStatic = false, /* a /* b /* c */  isAbstract = false, /* a */ isFinal /* a */ = false; //asd /* */ /*";
 
         input = input.replaceAll("(/\\*(?:.|[\\r|\\n])*?\\*/)|(//.*)", "");
         return input;
     }
 
     /**
-    * Remove all qouted string in the text
+    * Remove all quoted string in the text
     *
     * @param input the text to be processed
     * @return the processed text
@@ -122,9 +121,8 @@ public class Parser {
     */
     public static String[] getAttributeDeclaration(String input) {
         input = input.split("\\(")[0];
-        String[] res = input.trim().replaceAll("=\\s*[^,]*\\s*(,|$)", ",").split("\\s*,\\s*");
 
-        return res;
+        return input.trim().replaceAll("=\\s*[^,]*\\s*(,|$)", ",").split("\\s*,\\s*");
     }
 
     /**

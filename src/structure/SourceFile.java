@@ -19,16 +19,16 @@ public class SourceFile {
     private String name, path;
 
     /**
-     * SourceFile Constructor
+     * SourceFile Constructor that takes a file path
      *
-     * @param filePath the path to a source file
+     * @param path the path to a source file
      */
-    public SourceFile(String filePath) {
+    public SourceFile(String path) {
         try {
             File self;
-            self = new File(filePath);
+            self = new File(path);
             name = self.getName();
-            path = self.getAbsolutePath();
+            this.path = self.getAbsolutePath();
 
             CompilationUnit cu = JavaParser.parse(self);
 
@@ -39,6 +39,12 @@ public class SourceFile {
         }
     }
 
+    /**
+     * SourceFile Constructor that takes an InputStream and a file path
+     *
+     * @param stream an InputStream to be read
+     * @param path the path to a source file
+     */
     public SourceFile(InputStream stream, String path) {
         this.path = path;
         name = path.replace("/", "\"").substring(path.lastIndexOf("\\") + 1, path.length());

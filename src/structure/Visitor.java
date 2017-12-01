@@ -11,11 +11,11 @@ import com.github.javaparser.printer.PrettyPrinterConfiguration;
 
 import java.util.List;
 
+/**
+ * Class Visitor used to traverse the file's structure tree
+ */
 public class Visitor {
-	private class A {
-		A() {}
-		void foo(){};
-	}
+
 	public static class ExtendableVisitor extends VoidVisitorAdapter<List<Extendable>> {
 		@Override
 		public void visit(ClassOrInterfaceDeclaration declaration, List<Extendable> list) {
@@ -36,6 +36,12 @@ public class Visitor {
 		}
 	}
 
+	/**
+	 * Get all methods and attributes in a ClassOrInterfaceDeclaration node
+	 *
+	 * @param declaration the ClassOrInterfaceDeclaration to be traversed
+	 * @param object the Extendable corresponding with the declaration
+	 */
 	private static void getAllMethodsAndAttributes(ClassOrInterfaceDeclaration declaration, Extendable object) {
 		for (ConstructorDeclaration item : declaration.getConstructors())
 			object.addMethod(new Method(item.getDeclarationAsString(true, false, true)));
@@ -57,6 +63,9 @@ public class Visitor {
 			}
 	}
 
+	/**
+	 * Class ConstructorVisitor to visit all constructor
+	 */
 	public static class ConstructorVisitor extends VoidVisitorAdapter<Extendable> {
 		@Override
 		public void visit(ConstructorDeclaration declaration, Extendable object) {
@@ -64,6 +73,10 @@ public class Visitor {
 		}
 	}
 
+
+	/**
+	 * Class MethodVisitor to visit all methods
+	 */
 	public static class MethodVisitor extends VoidVisitorAdapter<Extendable> {
 		@Override
 		public void visit(MethodDeclaration declaration, Extendable object) {
@@ -71,6 +84,9 @@ public class Visitor {
 		}
 	}
 
+	/**
+	 * Class AttributeVisitor to visit all attributes
+	 */
 	public static class AttributeVisitor extends VoidVisitorAdapter<Extendable> {
 		@Override
 		public void visit(FieldDeclaration declaration, Extendable object) {

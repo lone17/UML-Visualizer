@@ -5,7 +5,7 @@ import java.io.File;
 
 public class PNGFilter extends FileFilter{
 	public boolean accept(File f) {
-		if (f.isDirectory()) return false;
+		if (f.isDirectory()) return true;
 		String name = f.getName();
 		return name.endsWith(".png") || name.endsWith(".PNG");
 	}

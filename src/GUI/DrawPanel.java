@@ -1,23 +1,45 @@
 package GUI;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.util.HashMap;
 
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 import com.mindfusion.drawing.*;
 import com.mindfusion.diagramming.*;
 import structure.*;
 
+/**
+ * Class DrawPanel represents a draw panel
+ *
+ * @author Vu Minh Hieu
+ */
 public class DrawPanel extends JScrollPane {
+
+	private Diagram diagram; // the diagram shown in this DrawPanel
+	private DiagramView diagramView; // the view of the diagram
+
+	// a HashMap contains all the node mapped by its name
+	private HashMap<String, ContainerNode> diagramNodes = new HashMap<>();
+
+	/**
+	 * DrawPanel Constructor
+	 */
 	public DrawPanel() {
 		super();
 	}
 
-
+	/**
+	 * Draw the DrawPanel into the UI
+	 *
+	 * @param project the Project to be visualized
+	 */
 	public void draw(Project project) {
+
 		diagram = new Diagram();
 		diagramView = new DiagramView(diagram);
 
@@ -30,9 +52,13 @@ public class DrawPanel extends JScrollPane {
 		configDiagram();
 
 		addZoomListener();
+		addMagnifyListener();
 
 	}
 
+	/**
+	 * Config the Diagram
+	 */
 	private void configDiagram() {
 
 		TreeLayout layout = new TreeLayout();
@@ -66,7 +92,11 @@ public class DrawPanel extends JScrollPane {
 		diagramView.setZoomFactor(60);
 	}
 
-	private HashMap<String, ContainerNode> diagramNodes = new HashMap<>();
+	/**
+	 * Initial the diagram to be drawn
+	 *
+	 * @param project the Project to be visualized
+	 */
 	private void initContent(Project project) {
 		diagram.clearAll();
 
@@ -113,26 +143,9 @@ public class DrawPanel extends JScrollPane {
 		}
 	}
 
-	private void addRow(TableNode node, String content, boolean isTitle) {
-		Cell cell = node.getCell(0, node.addRow());
-		if (isTitle) {
-			cell.setRowSpan(2);
-			cell.setTextColor(Color.white);
-			cell.setFont(new Font("Arial", Font.BOLD, 4));
-			cell.setText(content);
-			cell.setTextPadding(new Thickness(6, 2, 50, 2));
-			cell.setTextFormat(new TextFormat(Align.Near, Align.Center));
-			node.addRow();
-		}
-		else {
-			cell.setTextPadding(new Thickness(8, 2, 5, 2));
-//			cell.setBrush(new SolidBrush(new Color(193, 255, 243)));
-			cell.setBrush(new SolidBrush(Color.white));
-			cell.setText(content);
-			cell.setTextFormat(new TextFormat(Align.Near, Align.Center));
-		}
-	}
-
+	/**
+	 * Initial links between ContainerNodes
+	 */
 	private void initLinks() {
 
 		DiagramNode parent;
@@ -169,6 +182,62 @@ public class DrawPanel extends JScrollPane {
 		}
 	}
 
+	/**
+	 * Get the diagram shown in the DrawPanel
+	 *
+	 * @return the contained diagram
+	 */
+	public Diagram getDiagram() {
+		return diagram;
+	}
+
+	/**
+	 * Set focus on a node
+	 *
+	 * @param nodeName the name of the node to be focused on
+	 */
+	public void focusOn(String nodeName) {
+		DiagramNode node = diagramNodes.get(nodeName);
+		if (node == null) return;
+		diagramView.bringIntoView(node);
+		node.setSelected(false);
+		node.setSelected(true);
+	}
+
+	/**
+	 * Add a row to a table node
+	 *
+	 * @param node the TableNode to be added
+	 * @param content the content to be shown on the new row
+	 * @param isTitle is the new row is a title row
+	 */
+	private void addRow(TableNode node, String content, boolean isTitle) {
+		Cell cell = node.getCell(0, node.addRow());
+		if (isTitle) {
+			cell.setRowSpan(2);
+			cell.setTextColor(Color.white);
+			cell.setFont(new Font("Arial", Font.BOLD, 4));
+			cell.setText(content);
+			cell.setTextPadding(new Thickness(6, 2, 50, 2));
+			cell.setTextFormat(new TextFormat(Align.Near, Align.Center));
+			node.addRow();
+		}
+		else {
+			cell.setTextPadding(new Thickness(8, 2, 5, 2));
+//			cell.setBrush(new SolidBrush(new Color(193, 255, 243)));
+			cell.setBrush(new SolidBrush(Color.white));
+			cell.setText(content);
+			cell.setTextFormat(new TextFormat(Align.Near, Align.Center));
+		}
+	}
+
+	/**
+	 * Add link between two node
+	 *
+	 * @param child the child node
+	 * @param parent the parent node
+	 * @param isInheritance if the link represents a inheritance relationship
+	 */
 	private void addLink(DiagramNode child, DiagramNode parent, boolean isInheritance) {
 		DiagramLink link = diagram.getFactory().createDiagramLink(parent, child);
 		if (isInheritance) {
@@ -186,18 +255,9 @@ public class DrawPanel extends JScrollPane {
 		link.setLocked(true);
 	}
 
-	public Diagram getDiagram() {
-		return diagram;
-	}
-
-	public void focusOn(String nodeName) {
-		DiagramNode node = diagramNodes.get(nodeName);
-		if (node == null) return;
-		diagramView.bringIntoView(node);
-		node.setSelected(false);
-		node.setSelected(true);
-	}
-
+	/**
+	 * Add a listener to listen to zoom event
+	 */
 	private void addZoomListener() {
 		diagramView.addMouseWheelListener(new MouseWheelListener(){
 			@Override
@@ -212,6 +272,41 @@ public class DrawPanel extends JScrollPane {
 		});
 	}
 
-	private Diagram diagram;
-	private DiagramView diagramView;
+	/**
+	 * Add a listener to
+	 */
+	private void addMagnifyListener() {
+		diagramView.addMouseListener(new MouseListener(){
+			@Override
+			public void mouseClicked(MouseEvent e){
+				return;
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e){
+				if (SwingUtilities.isRightMouseButton(e)) {
+					diagramView.setBehavior(Behavior.Magnify);
+					diagramView.updateUI();
+				}
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e){
+				if (SwingUtilities.isRightMouseButton(e)) {
+					diagramView.setBehavior(Behavior.PanAndModify);
+					diagramView.updateUI();
+				}
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e){
+				return;
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e){
+				return;
+			}
+		});
+	}
 }
