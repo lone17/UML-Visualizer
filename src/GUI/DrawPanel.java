@@ -89,7 +89,7 @@ public class DrawPanel extends JScrollPane {
 		diagram.setEnableLanes(true);
 		diagram.setLinkRouter(new GridRouter());
 		diagram.setLinkCrossings(LinkCrossings.Arcs);
-		diagramView.setZoomFactor(70);
+		diagramView.setZoomFactor(60);
 	}
 
 	/**

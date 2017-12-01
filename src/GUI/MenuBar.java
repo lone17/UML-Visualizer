@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import GUI.filter.*;
+import jdk.nashorn.internal.scripts.JO;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import structure.*;
 
@@ -40,9 +41,9 @@ public class MenuBar extends JMenuBar{
 	private MenuBar() {
 		super();
 
-		loadProject = new JButton("Load Project");
-		saveAsImage = new JButton("Save as Picture");
-		saveAsText = new JButton("Save as Text");
+    loadProject = new JButton("Load Project", new ImageIcon("src\\icon\\load_project.png"));
+    saveAsImage = new JButton("Save as Picture", new ImageIcon("src\\icon\\save_as_image.png"));
+    saveAsText = new JButton("Save as Text", new ImageIcon("src\\icon\\save_as_text.png"));
 		comboBox = new JComboBox();
 
 		loadProject.setFocusPainted(false);
@@ -121,7 +122,10 @@ public class MenuBar extends JMenuBar{
 					initSearchBar();
 					addSearchListener();
 
-					JOptionPane.showMessageDialog(App.getMainWindow(), "Loaded files: " + App.getTreePanel().getLoadedFilesCount());
+					if (App.getTreePanel().getLoadedFilesCount() > 0)
+              JOptionPane.showMessageDialog(App.getMainWindow(), "Loaded file(s): " + App.getTreePanel().getLoadedFilesCount());
+          else
+              JOptionPane.showMessageDialog(App.getMainWindow(), "No source file found", "Input error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -195,10 +199,12 @@ public class MenuBar extends JMenuBar{
 
 					BufferedImage img = App.getDrawPanel().getDiagram().createImage(BufferedImage.TYPE_INT_RGB);
 					try {
-						ImageIO.write(img, ext, f);
-					} catch (IOException ex) {
-						ex.printStackTrace();
-					}
+              ImageIO.write(img, ext, f);
+              JOptionPane.showMessageDialog(App.getMainWindow(),"Image saved successfully");
+          } catch (IOException ex) {
+              ex.printStackTrace();
+              JOptionPane.showMessageDialog(App.getMainWindow(), "Save error", "Save error", JOptionPane.ERROR_MESSAGE);
+          }
 				}
 			}
 		});
@@ -227,15 +233,17 @@ public class MenuBar extends JMenuBar{
 					if (!f.getName().toLowerCase().endsWith(".txt"))
 						f = new File(f.getParentFile(), f.getName() + ".txt");
 					try {
-						FileWriter writer = new FileWriter(f);
-						BufferedWriter out = new BufferedWriter(writer);
+              FileWriter writer = new FileWriter(f);
+              BufferedWriter out = new BufferedWriter(writer);
 
-						out.write(App.getProject().toString());
+              out.write(App.getProject().toString());
 
-						out.close();
-					} catch (IOException ex) {
-						System.out.println(ex);
-					}
+              out.close();
+              JOptionPane.showMessageDialog(App.getMainWindow(), "Text file saved successfully");
+          } catch (IOException ex) {
+              System.out.println(ex);
+              JOptionPane.showMessageDialog(App.getMainWindow(), "Save error", "Save error", JOptionPane.ERROR_MESSAGE);
+          }
 				}
 			}
 		});

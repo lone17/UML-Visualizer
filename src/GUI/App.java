@@ -98,23 +98,18 @@ public class App {
 	public static void run() {
 		try {
 			UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (UnsupportedLookAndFeelException e) {
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
+
 		mainWindow = MainWindow.getMainWindowInstance();
 		menuBar = MenuBar.getMenuBarInstance();
 		treePanel = new TreePanel();
 		drawPanel = new DrawPanel();
 		text = new JTextArea();
-		text.setEditable(false);
-		text.setPreferredSize(new Dimension(1400, 30));
 
+		text.setPreferredSize(new Dimension(mainWindow.getWidth(), 30));
+		text.setEditable(false);
 
 		mainWindow.add(menuBar, BorderLayout.NORTH);
 		mainWindow.add(treePanel, BorderLayout.WEST);
