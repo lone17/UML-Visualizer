@@ -7,7 +7,7 @@ import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 
 /**
- * class SourceFile represents a source file
+ * Class SourceFile represents a source file
  *
  * @author Vu Minh Hieu
  */

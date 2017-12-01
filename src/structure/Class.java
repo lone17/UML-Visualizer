@@ -27,18 +27,15 @@ public class Class extends Extendable {
         type = "class";
         name = declaration.getNameAsString();
 
-        if (declaration.isPublic())
-            accessModifier = "public";
-        else if (declaration.isProtected())
-            accessModifier = "protected";
-        else if (declaration.isPrivate())
-            accessModifier = "private";
+        if (declaration.isPublic()) accessModifier = "public";
+        else if (declaration.isProtected()) accessModifier = "protected";
+        else if (declaration.isPrivate()) accessModifier = "private";
 
         for (ClassOrInterfaceType item : declaration.getExtendedTypes())
             baseClass = item.getName().toString();
 
         for (ClassOrInterfaceType item : declaration.getImplementedTypes())
-           baseInterfaces.add(item.getName().toString());
+            baseInterfaces.add(item.getName().toString());
     }
 
     /**
@@ -65,7 +62,7 @@ public class Class extends Extendable {
             if (attribute != null) {
                 this.attributes.add(attribute);
                 associations.add(attribute.getType().replaceAll("[\\[<].*", ""));
-//                associations.add(attribute.getType().replaceAll("(.*<)|(>*)", ""));
+                //                associations.add(attribute.getType().replaceAll("(.*<)|(>*)", ""));
             }
     }
 
@@ -74,29 +71,28 @@ public class Class extends Extendable {
      *
      * @return a HashSet contains all association components
      */
-    public HashSet<String> getAssociations(){
+    public HashSet<String> getAssociations() {
         return associations;
     }
 
     /**
-	 * @return a string representation of Class for printing
-	 */
-	@Override
-	public String toString() {
+     * @return a string representation of Class for printing
+     */
+    @Override
+    public String toString() {
 
         String s = "";
         if (!accessModifier.equals("default")) s += accessModifier + " ";
         if (isAbstract) s += "abstract ";
-        if (isStatic)   s += "static ";
-        if (isFinal)    s += "final ";
+        if (isStatic) s += "static ";
+        if (isFinal) s += "final ";
 
         s += type + " " + name + "\n";
 
         if (baseClass != null) s += name + " ---|> " + baseClass + "\n";
 
-        if (baseInterfaces != null)
-            for (String item : baseInterfaces)
-                s += name + " ---|> " + item + "\n";
+        if (baseInterfaces != null) for (String item : baseInterfaces)
+            s += name + " ---|> " + item + "\n";
 
         for (String item : associations)
             s += name + " <>--- " + item + "\n";
@@ -110,7 +106,7 @@ public class Class extends Extendable {
             s += item.toString() + "\n";
 
         return s;
-	}
+    }
 
     /**
      * Local testing

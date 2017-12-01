@@ -1,7 +1,7 @@
 package structure;
 
 /**
- * class Component represents a component
+ * Class Component represents a component
  *
  * @author Vu Minh Hieu
  */

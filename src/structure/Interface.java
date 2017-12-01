@@ -6,7 +6,7 @@ import com.github.javaparser.ast.type.ClassOrInterfaceType;
 import java.util.*;
 
 /**
- * class Interface represents an interface
+ * Class Interface represents an interface
  *
  * @author Vu Minh Hieu
  */

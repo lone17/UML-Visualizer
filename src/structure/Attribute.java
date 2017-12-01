@@ -40,20 +40,16 @@ public class Attribute extends Component {
 
         for (int i = len - 3; i >= 0; --i) {
             String cur = declaration[i];
-            if (cur.equals("static"))
-                isStatic = true;
-            else if (cur.equals("abstract"))
-                isAbstract = true;
-            else if (cur.equals("final"))
-                isFinal = true;
-            else if (modifiers.contains(cur))
-                accessModifier = cur;
+            if (cur.equals("static")) isStatic = true;
+            else if (cur.equals("abstract")) isAbstract = true;
+            else if (cur.equals("final")) isFinal = true;
+            else if (modifiers.contains(cur)) accessModifier = cur;
         }
     }
 
     /**
      * @return true if this component is a attribute
-     *         false otherwise
+     * false otherwise
      */
     @Override
     public boolean isAttribute() {
@@ -76,11 +72,11 @@ public class Attribute extends Component {
         String s = "";
         if (!accessModifier.equals("default")) s += accessModifier + " ";
         if (isAbstract) s += "abstract ";
-        if (isStatic)   s += "static ";
-        if (isFinal)    s += "final ";
+        if (isStatic) s += "static ";
+        if (isFinal) s += "final ";
         if (type != null) s += type + " ";
 
-        return s  + name;
+        return s + name;
     }
 
     /**

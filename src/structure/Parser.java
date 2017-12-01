@@ -1,14 +1,14 @@
 package structure;
 
 /**
- * class Parser represents a text parser
+ * Class Parser represents a text parser
  *
  * @author Vu Minh HIeu
  */
 public class Parser {
 
     /**
-     * preprocess the text
+     * Pre-process the text
      *
      * @param input the text to be processed
      * @return the processed text

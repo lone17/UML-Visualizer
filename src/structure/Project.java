@@ -7,7 +7,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 /**
- * class Project represent a java project
+ * Class Project represent a java project
  *
  * @author Vu Minh Hieu
  */

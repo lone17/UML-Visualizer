@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
- * class Directory represent a directory
+ * class Directory represents a directory
  *
  * @author Vu Minh Hieu
  */
@@ -22,8 +22,7 @@ public class Directory {
      */
     public Directory(String path) {
         self = new File(path);
-        if (!self.exists())
-            throw new RuntimeException(": Directory not found");
+        if (!self.exists()) throw new RuntimeException(": Directory not found");
         subDirectories = new LinkedList<>();
         setSubDirectories();
         allSourceFilePaths = new LinkedList<String>();
@@ -61,7 +60,7 @@ public class Directory {
      *
      * @return directory's name
      */
-    public String getName(){
+    public String getName() {
         return self.getName();
     }
 
@@ -97,7 +96,7 @@ public class Directory {
      */
     protected void printContent(int level) {
         for (int i = 0; i < level; ++i)
-        System.out.print("  ");
+            System.out.print("  ");
 
         if (self.isDirectory() && level != 0) System.out.print("> ");
         else if (self.isFile()) System.out.print("- ");
@@ -106,7 +105,7 @@ public class Directory {
 
         if (self.isDirectory()) {
             for (Directory dir : subDirectories)
-                dir.printContent(level+1);
+                dir.printContent(level + 1);
         }
     }
 
@@ -118,8 +117,7 @@ public class Directory {
 
         Directory dir = null;
 
-        if (args.length != 0 )
-            dir = new Directory(args[0]);
+        if (args.length != 0) dir = new Directory(args[0]);
         else
             dir = new Directory("E:\\Code\\OOP\\UML-Visualizer\\Attribute.java");
 
