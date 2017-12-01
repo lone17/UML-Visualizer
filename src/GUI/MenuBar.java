@@ -70,7 +70,7 @@ public class MenuBar extends JMenuBar{
 			Collections.sort(items, String.CASE_INSENSITIVE_ORDER);
 
 			comboBox = new JComboBox(items.toArray());
-			comboBox.setMaximumSize(new Dimension(600, 30));
+			comboBox.setMaximumSize(new Dimension(500, 30));
 			comboBox.setMaximumRowCount(4);
 			comboBox.setAlignmentX(Box.RIGHT_ALIGNMENT);
 			AutoCompleteDecorator.decorate(comboBox);
