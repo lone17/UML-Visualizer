@@ -7,16 +7,25 @@ import java.awt.*;
 import java.net.URL;
 
 /**
- * Defines the
+ * Defines the requirements for an object that displays a tree node
+ *
+ * @author Nguyen Xuan Tung
+ * @author Vu Minh Hieu
  */
-public class ComponentTreeCellRenderer implements TreeCellRenderer{
+public class ComponentTreeCellRenderer implements TreeCellRenderer {
 
     private JLabel label;
 
+    /**
+     * Constructor
+     */
     ComponentTreeCellRenderer() {
         label = new JLabel();
     }
 
+    /**
+     * Set up
+     */
     @Override
     public Component getTreeCellRendererComponent(JTree tree, Object value,
                                                   boolean selected, boolean expanded,
