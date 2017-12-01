@@ -30,6 +30,7 @@ public class DrawPanel extends JScrollPane {
 		configDiagram();
 
 		addZoomListener();
+
 	}
 
 	private void configDiagram() {
@@ -143,7 +144,7 @@ public class DrawPanel extends JScrollPane {
 				child = diagramNodes.get(object.getName());
 
 				if (object.getBaseClass() != null) {
-					parent = (ContainerNode) diagramNodes.get(object.getBaseClass());
+					parent = diagramNodes.get(object.getBaseClass());
 					if (parent == null) continue;
 					addLink(child, parent, true);
 				}

@@ -1,27 +1,61 @@
 package GUI.tree;
 
-public class ComponentDetail {
-    private String name;
-    private String icon;
+/**
+ * Class ComponentDetail represents an object that makes up a node
+ *
+ * @author Nguyen Xuan Tung
+ */
+public class ComponentDetail{
 
-    public ComponentDetail(String name, String icon) {
-        this.name = name;
-        this.icon = icon;
-    }
+	// Node's name
+	private String name;
+	// Node's icon path
+	private String icon;
 
-    public String getName() {
-        return name;
-    }
+	/**
+	 * ComponentDetail constructor
+	 *
+	 * @param name Node's name
+	 * @param icon Node's icon path
+	 */
+	public ComponentDetail(String name, String icon){
+		this.name = name;
+		this.icon = icon;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * Get node's name
+	 *
+	 * @return name
+	 */
+	public String getName(){
+		return name;
+	}
 
-    public String getIcon() {
-        return icon;
-    }
+	/**
+	 * Set node's name
+	 *
+	 * @param name String
+	 */
+	public void setName(String name){
+		this.name = name;
+	}
 
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
+	/**
+	 * Get icon path
+	 *
+	 * @return icon path
+	 */
+	public String getIcon(){
+		return icon;
+	}
+
+	/**
+	 * Set icon path
+	 *
+	 * @param icon path
+	 */
+	public void setIcon(String icon){
+		this.icon = icon;
+	}
 }
