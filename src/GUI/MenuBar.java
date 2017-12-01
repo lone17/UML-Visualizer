@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import GUI.filter.*;
+import jdk.nashorn.internal.scripts.JO;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import structure.*;
 
@@ -215,8 +216,10 @@ public class MenuBar extends JMenuBar {
                         out.write(App.getProject().toString());
 
                         out.close();
+                        JOptionPane.showMessageDialog(App.getMainWindow(), "Text file saved successfully");
                     } catch (IOException ex) {
                         System.out.println(ex);
+                        JOptionPane.showMessageDialog(App.getMainWindow(), "Save error", "Save error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
