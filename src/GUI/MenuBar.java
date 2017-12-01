@@ -213,7 +213,7 @@ public class MenuBar extends JMenuBar{
 			public void actionPerformed(ActionEvent e){
 				JFileChooser chooser = new JFileChooser(new java.io.File("."));
 
-				chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 				chooser.setDialogTitle("Save as");
 				chooser.setSelectedFile( new File(".\\" + App.getProject().getName()) );
 
