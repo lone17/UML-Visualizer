@@ -2,6 +2,9 @@ package structure;
 
 import java.util.LinkedList;
 
+/**
+ * Class Extendable represents a Class or an Interface
+ */
 public abstract class Extendable extends Component {
 
 	protected String baseClass; // parent class
@@ -28,7 +31,7 @@ public abstract class Extendable extends Component {
 	}
 
 	/**
-	 * Check wether this Class has any attribute
+	 * Check whether this Class has any attribute
 	 *
 	 * @return true if there is any attribute contained in this Class
 	 *         false otherwise
@@ -38,7 +41,7 @@ public abstract class Extendable extends Component {
 	}
 
 	/**
-	 * Check wether this Class has any method
+	 * Check whether this Class has any method
 	 *
 	 * @return true if there is any method contained in this Class
 	 *         false otherwise
@@ -103,7 +106,7 @@ public abstract class Extendable extends Component {
 	}
 
 	/**
-	 * Return all contianed attributes
+	 * Return all contained attributes
 	 *
 	 * @return a Linkedlist contains all attributes
 	 */

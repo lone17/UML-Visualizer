@@ -44,28 +44,28 @@ public class Class extends Extendable {
     /**
      * Add an attribute
      *
-     * @param att the attribute to be added
+     * @param attribute the attribute to be added
      */
     @Override
-    public void addAttribute(Attribute att) {
-        if (att == null) return;
-        attributes.add(att);
-        associations.add(att.getType().replaceAll("[\\[<].*", ""));
+    public void addAttribute(Attribute attribute) {
+        if (attribute == null) return;
+        attributes.add(attribute);
+        associations.add(attribute.getType().replaceAll("[\\[<].*", ""));
     }
 
     /**
      * Add a list of attributes
      *
-     * @param atts the list of attributes to be added
+     * @param attributes the list of attributes to be added
      */
     @Override
-    public void addAllAttributes(LinkedList<Attribute> atts) {
-        if (atts == null) return;
-        for (Attribute att : atts)
-            if (att != null) {
-                attributes.add(att);
-                associations.add(att.getType().replaceAll("[\\[<].*", ""));
-//                associations.add(att.getType().replaceAll("(.*<)|(>*)", ""));
+    public void addAllAttributes(LinkedList<Attribute> attributes) {
+        if (attributes == null) return;
+        for (Attribute attribute : attributes)
+            if (attribute != null) {
+                this.attributes.add(attribute);
+                associations.add(attribute.getType().replaceAll("[\\[<].*", ""));
+//                associations.add(attribute.getType().replaceAll("(.*<)|(>*)", ""));
             }
     }
 

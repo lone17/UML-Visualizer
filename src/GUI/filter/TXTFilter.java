@@ -5,7 +5,7 @@ import java.io.File;
 
 public class TXTFilter extends FileFilter{
 	public boolean accept(File f) {
-		if (f.isDirectory()) return false;
+		if (f.isDirectory()) return true;
 		String name = f.getName();
 		return name.endsWith(".txt") || name.endsWith(".TXT");
 	}

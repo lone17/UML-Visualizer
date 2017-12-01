@@ -20,19 +20,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Class MenuBar represents a menu bar
+ *
+ * @author Vu Minh Hieu
+ */
 public class MenuBar extends JMenuBar{
-	private static MenuBar menu = new MenuBar();
 
-	private JButton loadProject;
-	private JButton saveAsImage;
-	private JButton saveAsText;
-	private JComboBox comboBox;
+	private static MenuBar menu = new MenuBar(); // the single MenuBar instance
 
+	private JButton loadProject; // load project button
+	private JButton saveAsImage; // save as image button
+	private JButton saveAsText; // save as text button
+	private JComboBox comboBox; // the search bar
+
+	/**
+	 * MenuBar private constructor
+	 */
 	private MenuBar() {
 		super();
-
-//		this.setUI(new BasicMenuBarUI());
-//		this.setBackground(Color.white);
 
 		loadProject = new JButton("Load Project");
 		saveAsImage = new JButton("Save as Picture");
@@ -53,6 +59,9 @@ public class MenuBar extends JMenuBar{
 		this.add(loadProject);
 	}
 
+	/**
+	 * Initial search bar's components
+	 */
 	private void initSearchBar() {
 		if(App.getProject() != null) {
 			this.remove(comboBox);
@@ -79,6 +88,9 @@ public class MenuBar extends JMenuBar{
 		}
 	}
 
+	/**
+	 * Add listener to listen to load event
+	 */
 	private void addLoadListener() {
 		loadProject.addActionListener(new ActionListener(){
 			@Override
@@ -115,6 +127,9 @@ public class MenuBar extends JMenuBar{
 		});
 	}
 
+	/**
+	 * Add listener to listen to search event
+	 */
 	private void addSearchListener() {
 		comboBox.addActionListener(new ActionListener(){
 			@Override
@@ -138,13 +153,16 @@ public class MenuBar extends JMenuBar{
 		});
 	}
 
+	/**
+	 * Add listener to listen to save image event
+	 */
 	private void addSaveAsImageListener() {
 		saveAsImage.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
 				JFileChooser chooser = new JFileChooser(new java.io.File("."));
 
-				chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 				chooser.setDialogTitle("Save as");
 				chooser.setSelectedFile( new File(".\\" + App.getProject().getName()) );
 
@@ -186,6 +204,9 @@ public class MenuBar extends JMenuBar{
 		});
 	}
 
+	/**
+	 * Add listener to listen to save text event
+	 */
 	private void addSaveAsTextListener() {
 		saveAsText.addActionListener(new ActionListener(){
 			@Override
@@ -220,6 +241,11 @@ public class MenuBar extends JMenuBar{
 		});
 	}
 
+	/**
+	 * Get the single MenuBar instance
+	 *
+	 * @return the single MenuBar instance
+	 */
 	public static MenuBar getMenuBarInstance() {
 		return menu;
 	}
