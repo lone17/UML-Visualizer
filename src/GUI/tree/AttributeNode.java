@@ -19,4 +19,12 @@ public class AttributeNode extends DefaultMutableTreeNode{
         super(new ComponentDetail(attribute.presentation(), "Icon\\Attribute\\"
                                                        + attribute.getAccessModifier() + ".png"));
     }
+	/**
+	 * AttributeNode Constructor
+	 *
+	 * @param attribute Attribute object to be shown on the node
+	 */
+	public AttributeNode(Attribute attribute){
+		super(new ComponentDetail(attribute.presentation(), "Icon\\Attribute\\" + attribute.getAccessModifier() + ".png"));
+	}
 }
