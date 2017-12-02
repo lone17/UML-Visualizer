@@ -13,9 +13,9 @@ import java.awt.*;
  * The container of the tree
  *
  * @author Nguyen Xuan Tung
+ * @author Vu Minh Hieu
  */
 public class TreePanel extends JScrollPane {
-    private int loadedFilesCount = 0;
 
     /**
      * TreePanel constructor
@@ -23,14 +23,10 @@ public class TreePanel extends JScrollPane {
     public TreePanel() {
         super();
         initContent(new DefaultMutableTreeNode(new ComponentDetail("Empty", "Icon\\root.png")));
-//        this.getHorizontalScrollBar().setBackground(new Color(90, 112, 160));
-//        this.getVerticalScrollBar().setBackground(new Color(90, 112, 160));
-//        this.getHorizontalScrollBar().setUI(new BasicScrollBarUI());
-//        this.getVerticalScrollBar().setUI(new BasicScrollBarUI());
     }
 
     /**
-     * Set up
+     * Initial contents in the tree
      *
      * @param root of the tree, in this specific project, root of the tree is the project name
      */
@@ -66,20 +62,10 @@ public class TreePanel extends JScrollPane {
     /**
      * Show the tree in the tree panel
      *
-     * @param project
+     * @param project the project to be shown in the tree
      */
     public void draw(Project project) {
         ProjectNode root = new ProjectNode(project);
-        loadedFilesCount = root.getSourceFileCount();
         initContent(root);
-    }
-
-    /**
-     * Get loaded file(s) count
-     *
-     * @return number of loaded file(s)
-     */
-    public int getLoadedFilesCount() {
-        return loadedFilesCount;
     }
 }

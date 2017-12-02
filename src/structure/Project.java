@@ -1,7 +1,6 @@
 package structure;
 
-import java.util.Enumeration;
-import java.util.LinkedList;
+import java.util.*;
 import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -13,7 +12,7 @@ import java.util.zip.ZipFile;
  */
 public class Project extends Directory {
 
-    private final LinkedList<SourceFile> sourceFiles; // all source files in the project
+    private final ArrayList<SourceFile> sourceFiles; // all source files in the project
 
     /**
      * Project Constructor
@@ -22,7 +21,7 @@ public class Project extends Directory {
      */
     public Project(String path) {
         super(path);
-        sourceFiles = new LinkedList<>();
+        sourceFiles = new ArrayList<>();
 
         if (!path.endsWith(".zip")) {
             for (String filePath : allSourceFilePaths)
@@ -40,6 +39,13 @@ public class Project extends Directory {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Collections.sort(sourceFiles, new Comparator<SourceFile>(){
+            @Override
+            public int compare(SourceFile f1, SourceFile f2){
+                return f1.getName().compareTo(f2.getName());
+            }
+        });
     }
 
     /**
@@ -47,8 +53,17 @@ public class Project extends Directory {
      *
      * @return a LinkedList contains all source files
      */
-    public LinkedList<SourceFile> getSourceFiles() {
+    public ArrayList<SourceFile> getSourceFiles() {
         return sourceFiles;
+    }
+
+    /**
+     * Get the number of source files in the project
+     *
+     * @return the number of source files
+     */
+    public int getSourceFileCount() {
+        return sourceFiles.size();
     }
 
     /**

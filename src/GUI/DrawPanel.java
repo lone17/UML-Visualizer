@@ -1,14 +1,16 @@
 package GUI;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.HashMap;
+import com.mindfusion.diagramming.*;
+import com.mindfusion.drawing.Align;
+import com.mindfusion.drawing.SolidBrush;
+import com.mindfusion.drawing.TextFormat;
+import structure.*;
 
 import javax.swing.*;
-
-import com.mindfusion.drawing.*;
-import com.mindfusion.diagramming.*;
-import structure.*;
+import java.awt.*;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+import java.util.HashMap;
 
 /**
  * Class DrawPanel represents a draw panel
@@ -22,7 +24,7 @@ public class DrawPanel extends JScrollPane {
 
 	// a HashMap contains all the node mapped by its name
 	private HashMap<String, ContainerNode> diagramNodes = new HashMap<>();
-    ContainerNode dummy;
+    private ContainerNode dummy; // dummy node for node positioning
 
     /**
 	 * DrawPanel Constructor

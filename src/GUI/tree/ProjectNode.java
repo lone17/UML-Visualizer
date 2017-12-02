@@ -7,6 +7,7 @@ import structure.SourceFile;
 import structure.Class;
 
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -15,8 +16,6 @@ import java.util.LinkedList;
  * @author Nguyen Xuan Tung
  */
 public class ProjectNode extends DefaultMutableTreeNode {
-    //Count source file
-    private int sourceFileCount;
 
     /**
      * Constructor
@@ -26,8 +25,7 @@ public class ProjectNode extends DefaultMutableTreeNode {
     public ProjectNode(Project project) {
         super(new ComponentDetail(project.getName(), "Icon\\root.png"));
 
-        LinkedList<SourceFile> sourceFiles = project.getSourceFiles();
-        sourceFileCount = sourceFiles.size();
+        ArrayList<SourceFile> sourceFiles = project.getSourceFiles();
 
         for (SourceFile file : sourceFiles) {
             for (Extendable object : file.getContainedExtendables())
@@ -36,14 +34,5 @@ public class ProjectNode extends DefaultMutableTreeNode {
                 else
                     this.add(new InterfaceNode((Interface) object));
         }
-    }
-
-    /**
-     * Get source file counter
-     *
-     * @return number of source file(s)
-     */
-    public int getSourceFileCount() {
-        return sourceFileCount;
     }
 }

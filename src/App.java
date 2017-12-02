@@ -4,8 +4,6 @@ import GUI.tree.*;
 import structure.Project;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.BorderLayout;
 
 /**
  * Class App represents the UML-Visualizer itself
@@ -19,7 +17,7 @@ public class App {
     private static MenuBar menuBar; // the application's menu bar
     private static TreePanel treePanel; // where the project's tree is shown
     private static DrawPanel drawPanel; // where the project's diagram is drawn
-    private static JTextArea text; // event history
+    private static EventHistoryPanel eventHistoryPanel; // event history
 
     /**
      * Return the main window of the Application
@@ -49,12 +47,12 @@ public class App {
     }
 
     /**
-     * Return the text area where event histories are written
+     * Return the EventHistoryPanel where event histories are shown
      *
-     * @return the bottom text area
+     * @return the application's event history panel
      */
-    public static JTextArea getText() {
-        return text;
+    public static EventHistoryPanel getEventHistoryPanel() {
+        return eventHistoryPanel;
     }
 
     /**
@@ -64,24 +62,6 @@ public class App {
      */
     public static Project getProject() {
         return project;
-    }
-
-    /**
-     * Set the application's tree panel
-     *
-     * @param treePanel the desired tree panel
-     */
-    public static void setTreePanel(TreePanel treePanel) {
-        App.treePanel = treePanel;
-    }
-
-    /**
-     * Set the application's draw panel
-     *
-     * @param drawPanel the disired draw panel
-     */
-    public static void setDrawPanel(DrawPanel drawPanel) {
-        App.drawPanel = drawPanel;
     }
 
     /**
@@ -103,19 +83,16 @@ public class App {
             e.printStackTrace();
         }
 
-        mainWindow = MainWindow.getMainWindowInstance();
-        menuBar = MenuBar.getMenuBarInstance();
+        mainWindow = MainWindow.getInstance();
+        menuBar = MenuBar.getInstance();
+        eventHistoryPanel = EventHistoryPanel.getInstance();
         treePanel = new TreePanel();
         drawPanel = new DrawPanel();
-        text = new JTextArea();
 
-        text.setPreferredSize(new Dimension(mainWindow.getWidth(), 30));
-        text.setEditable(false);
-
-        mainWindow.add(menuBar, BorderLayout.NORTH);
-        mainWindow.add(treePanel, BorderLayout.WEST);
-        mainWindow.add(drawPanel, BorderLayout.CENTER);
-        mainWindow.add(text, BorderLayout.SOUTH);
+        mainWindow.setTop(menuBar);
+        mainWindow.setLeft(treePanel);
+        mainWindow.setRight(drawPanel);
+        mainWindow.setBottom(eventHistoryPanel);
     }
 
     /**
@@ -130,7 +107,6 @@ public class App {
                 App.run();
             }
         });
-
     }
 
 }

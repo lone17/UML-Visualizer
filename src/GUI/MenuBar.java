@@ -41,7 +41,7 @@ public class MenuBar extends JMenuBar {
         super();
 
         loadProject = new JButton("Load Project", new ImageIcon("src\\GUI\\icon\\load_project.png"));
-        saveAsImage = new JButton("Save as Picture", new ImageIcon("src\\GUI\\icon\\save_as_image.png"));
+        saveAsImage = new JButton("Save as Image", new ImageIcon("src\\GUI\\icon\\save_as_image.png"));
         saveAsText = new JButton("Save as Text", new ImageIcon("src\\GUI\\icon\\save_as_text.png"));
         comboBox = new JComboBox();
 
@@ -56,7 +56,7 @@ public class MenuBar extends JMenuBar {
         addSaveAsImageListener();
         addSaveAsTextListener();
 
-        this.add(loadProject);
+        add(loadProject);
     }
 
     /**
@@ -108,6 +108,17 @@ public class MenuBar extends JMenuBar {
                     File f = chooser.getSelectedFile();
                     String selectedPath = f.getAbsolutePath();
                     GUI.App.setProject(new Project(selectedPath));
+
+                    if (GUI.App.getProject().getSourceFileCount() == 0) {
+                        GUI.App.getEventHistoryPanel().append("No source file was found in " + selectedPath +"\n");
+                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(),
+                                "The path you have chosen does not contain any source file.\n" +
+                                        "Please pick another.",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
                     GUI.App.getTreePanel().draw(GUI.App.getProject());
                     GUI.App.getDrawPanel().draw(GUI.App.getProject());
 
@@ -117,16 +128,16 @@ public class MenuBar extends JMenuBar {
                     loadProject.setFocusable(false);
                     add(saveAsImage);
                     add(saveAsText);
+                    updateUI();
 
                     initSearchBar();
                     addSearchListener();
 
-                    if (GUI.App.getTreePanel().getLoadedFilesCount() > 0) {
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Loaded file(s): " + GUI.App.getTreePanel().getLoadedFilesCount());
-                        GUI.App.getText().append("Loaded " + GUI.App.getTreePanel().getLoadedFilesCount() + " file(s) from " + selectedPath + "\n");
-                    }
-                    else
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "No source file found", "Error", JOptionPane.ERROR_MESSAGE);
+                    GUI.App.getEventHistoryPanel().append("Loaded "
+                                                              + GUI.App.getProject().getSourceFileCount()
+                                                              + " file(s) from " + selectedPath + "\n");
+                    JOptionPane.showMessageDialog(GUI.App.getMainWindow(),
+                            "Loaded file(s): " + GUI.App.getProject().getSourceFileCount());
                 }
             }
         });
@@ -179,8 +190,8 @@ public class MenuBar extends JMenuBar {
                 chooser.addChoosableFileFilter(new GIFFilter());
                 chooser.setAcceptAllFileFilterUsed(false);
 
-                if (chooser.showDialog(GUI.App.getMainWindow(), "Save Picture") == JFileChooser.APPROVE_OPTION) {
-                    String ext = "";
+                if (chooser.showDialog(GUI.App.getMainWindow(), "Save Image") == JFileChooser.APPROVE_OPTION) {
+                    String ext;
 
                     String description = chooser.getFileFilter().getDescription();
                     if (description.equals("*.jpg, *.JPG")) ext = "jpg";
@@ -197,10 +208,15 @@ public class MenuBar extends JMenuBar {
                     BufferedImage img = GUI.App.getDrawPanel().getDiagram().createImage(BufferedImage.TYPE_INT_RGB);
                     try {
                         ImageIO.write(img, ext, f);
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Image saved successfully");
+                        GUI.App.getEventHistoryPanel().append("Saved image as " + f.getAbsolutePath() + "\n");
+                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(),
+                                "Image saved successfully.");
                     } catch (IOException ex) {
                         ex.printStackTrace();
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Save error", "Save error", JOptionPane.ERROR_MESSAGE);
+                        GUI.App.getEventHistoryPanel().append("Cannot save image as " + f.getAbsolutePath() + "\n");
+                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(),
+                                "Cannot save Image.", "Error",
+                                JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -236,10 +252,9 @@ public class MenuBar extends JMenuBar {
                         out.write(GUI.App.getProject().toString());
 
                         out.close();
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Text file saved successfully");
+                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Text file saved successfully.");
                     } catch (IOException ex) {
-                        System.out.println(ex);
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Save error", "Save error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Cannot save file", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -251,7 +266,7 @@ public class MenuBar extends JMenuBar {
      *
      * @return the single MenuBar instance
      */
-    public static MenuBar getMenuBarInstance() {
+    public static MenuBar getInstance() {
         return menu;
     }
 }
