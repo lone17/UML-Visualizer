@@ -62,7 +62,7 @@ public class Class extends Extendable {
             if (attribute != null) {
                 this.attributes.add(attribute);
                 associations.add(attribute.getType().replaceAll("[\\[<].*", ""));
-                //                associations.add(attribute.getType().replaceAll("(.*<)|(>*)", ""));
+                associations.add(attribute.getType().replaceAll("(.*<)|(>*)", ""));
             }
     }
 

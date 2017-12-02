@@ -40,9 +40,9 @@ public class MenuBar extends JMenuBar {
     private MenuBar() {
         super();
 
-        loadProject = new JButton("Load Project", new ImageIcon("src\\icon\\load_project.png"));
-        saveAsImage = new JButton("Save as Picture", new ImageIcon("src\\icon\\save_as_image.png"));
-        saveAsText = new JButton("Save as Text", new ImageIcon("src\\icon\\save_as_text.png"));
+        loadProject = new JButton("Load Project", new ImageIcon("src\\GUI\\icon\\load_project.png"));
+        saveAsImage = new JButton("Save as Picture", new ImageIcon("src\\GUI\\icon\\save_as_image.png"));
+        saveAsText = new JButton("Save as Text", new ImageIcon("src\\GUI\\icon\\save_as_text.png"));
         comboBox = new JComboBox();
 
         loadProject.setFocusPainted(false);
@@ -79,7 +79,9 @@ public class MenuBar extends JMenuBar {
             Collections.sort(items, String.CASE_INSENSITIVE_ORDER);
 
             comboBox = new JComboBox(items.toArray());
-            comboBox.setMaximumSize(new Dimension(500, 30));
+            comboBox.setPreferredSize(new Dimension(400, loadProject.getHeight() - 2));
+            comboBox.setMaximumSize(new Dimension(600, loadProject.getHeight() - 2));
+            comboBox.setLightWeightPopupEnabled(true);
             comboBox.setMaximumRowCount(4);
             comboBox.setAlignmentX(Box.RIGHT_ALIGNMENT);
             AutoCompleteDecorator.decorate(comboBox);
@@ -99,7 +101,7 @@ public class MenuBar extends JMenuBar {
 
                 chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
                 chooser.changeToParentDirectory();
-                chooser.setDialogTitle("Load Project");
+                chooser.setDialogTitle("Choose your source location");
                 chooser.setDialogType(JFileChooser.SAVE_DIALOG);
 
                 if (chooser.showDialog(GUI.App.getMainWindow(), "Load") == JFileChooser.APPROVE_OPTION) {
@@ -108,7 +110,6 @@ public class MenuBar extends JMenuBar {
                     GUI.App.setProject(new Project(selectedPath));
                     GUI.App.getTreePanel().draw(GUI.App.getProject());
                     GUI.App.getDrawPanel().draw(GUI.App.getProject());
-                    GUI.App.getText().append("Loaded " + GUI.App.getTreePanel().getLoadedFilesCount() + " file(s) from " + selectedPath + "\n");
 
                     GUI.App.getMainWindow().revalidate();
                     GUI.App.getMainWindow().repaint();
@@ -120,10 +121,12 @@ public class MenuBar extends JMenuBar {
                     initSearchBar();
                     addSearchListener();
 
-                    if (GUI.App.getTreePanel().getLoadedFilesCount() > 0)
+                    if (GUI.App.getTreePanel().getLoadedFilesCount() > 0) {
                         JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Loaded file(s): " + GUI.App.getTreePanel().getLoadedFilesCount());
+                        GUI.App.getText().append("Loaded " + GUI.App.getTreePanel().getLoadedFilesCount() + " file(s) from " + selectedPath + "\n");
+                    }
                     else
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "No source file found", "Input error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "No source file found", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

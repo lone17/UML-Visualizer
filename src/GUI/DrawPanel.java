@@ -1,10 +1,7 @@
 package GUI;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
+import java.awt.event.*;
 import java.util.HashMap;
 
 import javax.swing.*;
@@ -25,8 +22,9 @@ public class DrawPanel extends JScrollPane {
 
 	// a HashMap contains all the node mapped by its name
 	private HashMap<String, ContainerNode> diagramNodes = new HashMap<>();
+    ContainerNode dummy;
 
-	/**
+    /**
 	 * DrawPanel Constructor
 	 */
 	public DrawPanel() {
@@ -47,13 +45,13 @@ public class DrawPanel extends JScrollPane {
 
 		initContent(project);
 
-		initLinks();
+		addInheritanceRelation();
 
 		configDiagram();
 
-		addZoomListener();
-		addMagnifyListener();
+		addAssociationRelationship();
 
+		addZoomListener();
 	}
 
 	/**
@@ -61,11 +59,11 @@ public class DrawPanel extends JScrollPane {
 	 */
 	private void configDiagram() {
 
-		TreeLayout layout = new TreeLayout();
-		layout.setLinkStyle(TreeLayoutLinkType.Straight);
-		layout.setLevelDistance(50);
-		layout.setNodeDistance(50);
-		layout.arrange(diagram);
+        TreeLayout layout = new TreeLayout();
+        layout.setLinkStyle(TreeLayoutLinkType.Cascading2);
+        layout.setLevelDistance(50);
+        layout.setNodeDistance(20);
+        layout.arrange(diagram);
 
 		diagram.resizeToFitItems(10);
 		diagram.setAutoResize(AutoResize.AllDirections);
@@ -78,18 +76,18 @@ public class DrawPanel extends JScrollPane {
 
 		TableNodeStyle tableNodeStyle = diagram.getTableNodeStyle();
 		tableNodeStyle.setBrush(new SolidBrush(new Color(38, 28, 27)));
-//		tableNodeStyle.setTextBrush(new SolidBrush(Color.white));
 
 		diagramView.setBehavior(Behavior.PanAndModify);
 		diagramView.setModificationStart(ModificationStart.AutoHandles);
 
-//		diagram.setBackBrush(new SolidBrush(new Color(17, 24, 23)));
 		diagram.setSelectAfterCreate(false);
 		diagram.setFont(new Font("Arial", Font.PLAIN, 5));
 		diagram.setEnableLanes(true);
 		diagram.setLinkRouter(new GridRouter());
-		diagram.setLinkCrossings(LinkCrossings.Arcs);
-		diagramView.setZoomFactor(60);
+		diagram.setLinkCrossings(LinkCrossings.Cut);
+	    diagramView.setZoomFactor(60);
+
+        diagram.getNodes().remove(dummy);
 	}
 
 	/**
@@ -135,7 +133,7 @@ public class DrawPanel extends JScrollPane {
 				container.setMargin(0);
 				container.add(node);
 				container.updateBounds(true);
-				container.setObstacle(false);
+				container.setObstacle(true);
 
 				diagramNodes.put(container.getCaption(), container);
 				diagram.add(container);
@@ -144,42 +142,60 @@ public class DrawPanel extends JScrollPane {
 	}
 
 	/**
-	 * Initial links between ContainerNodes
+	 * Initial links represent inheritance relationship between ContainerNodes
 	 */
-	private void initLinks() {
+	private void addInheritanceRelation(){
 
-		DiagramNode parent;
-		DiagramNode child;
+        DiagramNode parent;
+        DiagramNode child;
+
+        for (SourceFile file : GUI.App.getProject().getSourceFiles()) {
+            for (Extendable object : file.getContainedExtendables()) {
+                child = diagramNodes.get(object.getName());
+
+                if (object.getBaseClass() != null) {
+                    parent = diagramNodes.get(object.getBaseClass());
+                    if (parent == null) continue;
+                    addLink(child, parent, true);
+                }
+
+                if (object.getBaseInterfaces() != null) for (String interfaceName : object.getBaseInterfaces()) {
+                    parent = diagramNodes.get(interfaceName);
+                    if (parent == null) continue;
+                    addLink(child, parent, true);
+                }
+            }
+        }
+
+        dummy = diagram.getFactory().createContainerNode(0, 15, 0, 0);
+        for (ContainerNode node : diagramNodes.values()) {
+            if (node.getAllIncomingLinks().isEmpty()) {
+                addLink(node, dummy, true);
+            }
+        }
+    }
+
+        /**
+         * Initial links represent inheritance relationship between ContainerNodes
+         */
+    private void addAssociationRelationship() {
+
+        DiagramNode parent, child;
+        for (SourceFile file : GUI.App.getProject().getSourceFiles()) {
+            for (Extendable object : file.getContainedExtendables()) {
+                parent = diagramNodes.get(object.getName());
 
 
-		for (SourceFile file : App.getProject().getSourceFiles()) {
-			for (Extendable object : file.getContainedExtendables()) {
-				child = diagramNodes.get(object.getName());
-
-				if (object.getBaseClass() != null) {
-					parent = diagramNodes.get(object.getBaseClass());
-					if (parent == null) continue;
-					addLink(child, parent, true);
-				}
-
-				if (object.getBaseInterfaces() != null)
-					for (String interfaceName : object.getBaseInterfaces()) {
-						parent = diagramNodes.get(interfaceName);
-						if (parent == null) continue;
-						addLink(child, parent, true);
-					}
-
-				parent = child;
-				if (object.isClass() && object.hasAttribute()) {
-					structure.Class aClass = (structure.Class) object;
-					for (String item : aClass.getAssociations()) {
-						child = diagram.findNodeById(item);
-						if (child == null) continue;
-						addLink(child, parent, false);
-					}
-				}
-			}
-		}
+                if (object.isClass() && object.hasAttribute()) {
+                    structure.Class aClass = (structure.Class) object;
+                    for (String item : aClass.getAssociations()) {
+                        child = diagram.findNodeById(item);
+                        if (child == null) continue;
+                        addLink(child, parent, false);
+                    }
+                }
+            }
+        }
 	}
 
 	/**
@@ -207,7 +223,7 @@ public class DrawPanel extends JScrollPane {
 	/**
 	 * Add a row to a table node
 	 *
-	 * @param node the TableNode to be added
+	 * @param node    the TableNode to be added
 	 * @param content the content to be shown on the new row
 	 * @param isTitle is the new row is a title row
 	 */
@@ -221,10 +237,8 @@ public class DrawPanel extends JScrollPane {
 			cell.setTextPadding(new Thickness(6, 2, 50, 2));
 			cell.setTextFormat(new TextFormat(Align.Near, Align.Center));
 			node.addRow();
-		}
-		else {
+		} else {
 			cell.setTextPadding(new Thickness(8, 2, 5, 2));
-//			cell.setBrush(new SolidBrush(new Color(193, 255, 243)));
 			cell.setBrush(new SolidBrush(Color.white));
 			cell.setText(content);
 			cell.setTextFormat(new TextFormat(Align.Near, Align.Center));
@@ -234,8 +248,8 @@ public class DrawPanel extends JScrollPane {
 	/**
 	 * Add link between two node
 	 *
-	 * @param child the child node
-	 * @param parent the parent node
+	 * @param child         the child node
+	 * @param parent        the parent node
 	 * @param isInheritance if the link represents a inheritance relationship
 	 */
 	private void addLink(DiagramNode child, DiagramNode parent, boolean isInheritance) {
@@ -244,8 +258,8 @@ public class DrawPanel extends JScrollPane {
 			link.setBaseShape(ArrowHeads.Triangle);
 			link.setHeadShape(ArrowHeads.None);
 			link.setBaseBrush(new SolidBrush(new Color(132, 238, 125)));
-		}
-		else {
+		} else {
+		    link.setAutoRoute(true);
 			link.setBaseShape(ArrowHeads.Rhombus);
 			link.setHeadShape(ArrowHeads.None);
 			link.setBaseBrush(new SolidBrush(new Color(255, 208, 149)));
@@ -259,7 +273,7 @@ public class DrawPanel extends JScrollPane {
 	 * Add a listener to listen to zoom event
 	 */
 	private void addZoomListener() {
-		diagramView.addMouseWheelListener(new MouseWheelListener(){
+		diagramView.addMouseWheelListener(new MouseWheelListener() {
 			@Override
 			public void mouseWheelMoved(MouseWheelEvent e){
 				int notches = e.getWheelRotation();
@@ -268,44 +282,6 @@ public class DrawPanel extends JScrollPane {
 					if (zoomFactor <= 20 && notches > 0) return;
 					diagramView.setZoomFactor(zoomFactor - notches);
 				}
-			}
-		});
-	}
-
-	/**
-	 * Add a listener to
-	 */
-	private void addMagnifyListener() {
-		diagramView.addMouseListener(new MouseListener(){
-			@Override
-			public void mouseClicked(MouseEvent e){
-				return;
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e){
-				if (SwingUtilities.isRightMouseButton(e)) {
-					diagramView.setBehavior(Behavior.Magnify);
-					diagramView.updateUI();
-				}
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e){
-				if (SwingUtilities.isRightMouseButton(e)) {
-					diagramView.setBehavior(Behavior.PanAndModify);
-					diagramView.updateUI();
-				}
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e){
-				return;
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e){
-				return;
 			}
 		});
 	}
