@@ -10,7 +10,7 @@ import java.util.*;
 public abstract class Component {
 
     // list of access modifiers
-    protected final List<String> modifiers = Arrays.asList("public", "protected", "private");
+    protected static final List<String> modifiers = Arrays.asList("public", "protected", "private");
 
     // name, type and access modifier of a component
     protected String name, type, accessModifier = "default";

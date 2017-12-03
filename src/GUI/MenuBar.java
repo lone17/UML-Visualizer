@@ -10,6 +10,7 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import structure.*;
 
 import java.awt.*;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -34,7 +35,9 @@ public class MenuBar extends JMenuBar {
     private JButton loadProject; // load project button
     private JButton saveAsImage; // save as image button
     private JButton saveAsText; // save as text button
+    private JLabel searchLabel; // the search label
     private JComboBox searchBar; // the search bar
+    private Component glue = Box.createHorizontalGlue();
 
     /**
      * MenuBar private constructor
@@ -45,6 +48,7 @@ public class MenuBar extends JMenuBar {
         loadProject = new JButton("Load Project", new ImageIcon("src\\GUI\\icon\\load_project.png"));
         saveAsImage = new JButton("Save as Image", new ImageIcon("src\\GUI\\icon\\save_as_image.png"));
         saveAsText = new JButton("Save as Text", new ImageIcon("src\\GUI\\icon\\save_as_text.png"));
+        searchLabel = new JLabel();
         searchBar = new JComboBox();
 
 //        loadProject.setMaximumSize(new Dimension(150, 30));
@@ -82,7 +86,10 @@ public class MenuBar extends JMenuBar {
      */
     private void initSearchBar() {
         if (GUI.App.getProject() != null) {
-            this.remove(searchBar);
+            remove(glue);
+            remove(searchLabel);
+            remove(searchBar);
+
             ArrayList<String> items = new ArrayList<>();
 
             items.add("");
@@ -101,19 +108,22 @@ public class MenuBar extends JMenuBar {
             searchBar.setMaximumSize(new Dimension(600, loadProject.getHeight() - 2));
             searchBar.setLightWeightPopupEnabled(true);
             searchBar.setMaximumRowCount(4);
-            searchBar.setAlignmentX(Box.RIGHT_ALIGNMENT);
+//            searchBar.setAlignmentX(Box.RIGHT_ALIGNMENT);
             AutoCompleteDecorator.decorate(searchBar);
-            JLabel label = new JLabel();
-            label.setText("Search  ");
-            label.setAlignmentY(Box.CENTER_ALIGNMENT);
-            label.setFont(new Font("Arial", Font.ITALIC, 12));
-            label.setLabelFor(searchBar);
-            label.setDisplayedMnemonic('S');
-            label.setToolTipText("Alt + S");
-            label.setIcon(new ImageIcon("src\\GUI\\icon\\search.png"));
-            this.add(Box.createHorizontalGlue());
-            this.add(label);
-            this.add(searchBar);
+
+            searchLabel = new JLabel("Search  ");
+//            searchLabel.setAlignmentY(Box.CENTER_ALIGNMENT);
+//            searchLabel.setAlignmentX(Box.RIGHT_ALIGNMENT);
+            searchLabel.setFont(new Font("Arial", Font.ITALIC, 12));
+            searchLabel.setLabelFor(searchBar);
+            searchLabel.setDisplayedMnemonic('S');
+            searchLabel.setToolTipText("Alt + S");
+            searchLabel.setIcon(new ImageIcon("src\\GUI\\icon\\search.png"));
+
+            add(glue);
+            add(searchLabel);
+            add(searchBar);
+
             GUI.App.getDrawPanel().grabFocus();
         }
     }
@@ -154,8 +164,10 @@ public class MenuBar extends JMenuBar {
                     GUI.App.getMainWindow().repaint();
 
                     loadProject.setFocusable(false);
+
                     add(saveAsImage);
                     add(saveAsText);
+
                     updateUI();
 
                     initSearchBar();

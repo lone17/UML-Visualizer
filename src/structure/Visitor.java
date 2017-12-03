@@ -1,10 +1,7 @@
 package structure;
 
 import com.github.javaparser.ast.Node;
-import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
-import com.github.javaparser.ast.body.ConstructorDeclaration;
-import com.github.javaparser.ast.body.FieldDeclaration;
-import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.body.*;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import com.github.javaparser.printer.PrettyPrinter;
 import com.github.javaparser.printer.PrettyPrinterConfiguration;
@@ -26,10 +23,6 @@ public class Visitor {
             if (declaration.isInterface()) object = new Interface(declaration);
             else object = new Class(declaration);
 
-            //			(new ConstructorVisitor()).visit(declaration, object);
-            //			(new MethodVisitor()).visit(declaration, object);
-            //			(new AttributeVisitor()).visit(declaration, object);
-
             Visitor.getAllMethodsAndAttributes(declaration, object);
 
             list.add(object);
@@ -50,12 +43,19 @@ public class Visitor {
             if (node instanceof FieldDeclaration) {
                 FieldDeclaration attribute = (FieldDeclaration) node;
 
-                PrettyPrinterConfiguration conf = new PrettyPrinterConfiguration();
-                conf.setPrintComments(false);
+                String tmp = "";
+                if (attribute.isPublic()) tmp += "public ";
+                else if (attribute.isPrivate()) tmp += "private ";
+                else if (attribute.isProtected()) tmp += "protected ";
+                if (attribute.isStatic()) tmp += "static ";
+                if (attribute.isFinal()) tmp += "final ";
 
-                PrettyPrinter pp = new PrettyPrinter(conf);
+                for (VariableDeclarator item : attribute.getVariables()) {
+                    object.addAttribute(new Attribute(tmp
+                                                    + item.getType().toString().replace(" ","") + " "
+                                                    + item.getName().toString()));
+                }
 
-                object.addAllAttributes(Attribute.generateInstances(pp.print(attribute)));
             } else if (node instanceof MethodDeclaration) {
                 MethodDeclaration method = (MethodDeclaration) node;
                 object.addMethod(new Method(method.getDeclarationAsString(true, false, true)));

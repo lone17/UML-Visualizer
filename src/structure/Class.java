@@ -12,6 +12,10 @@ import java.util.*;
  */
 public class Class extends Extendable {
 
+    // list of primitive types
+    private static final List<String> primitiveTypes = Arrays.asList("int", "boolean", "double", "char",
+            "long", "float", "short", "byte");
+
     private HashSet<String> associations; // all association components
 
     public Class(ClassOrInterfaceDeclaration declaration) {
@@ -47,7 +51,14 @@ public class Class extends Extendable {
     public void addAttribute(Attribute attribute) {
         if (attribute == null) return;
         attributes.add(attribute);
-        associations.add(attribute.getType().replaceAll("[\\[<].*", ""));
+
+        String type = attribute.getType().replaceAll("[\\[<].*", "");
+        if (!primitiveTypes.contains(type)) associations.add(type);
+
+        for (String item : attribute.getType().replaceAll("(\\s+)|(.*<)|(>.*)", "").split(",")) {
+            type = item.replaceAll("[\\[<].*", "");
+            if (!primitiveTypes.contains(type)) associations.add(type);
+        }
     }
 
     /**
@@ -61,8 +72,14 @@ public class Class extends Extendable {
         for (Attribute attribute : attributes)
             if (attribute != null) {
                 this.attributes.add(attribute);
-                associations.add(attribute.getType().replaceAll("[\\[<].*", ""));
-                associations.add(attribute.getType().replaceAll("(.*<)|(>*)", ""));
+
+                String type = attribute.getType().replaceAll("[\\[<].*", "");
+                if (!primitiveTypes.contains(type)) associations.add(type);
+
+                for (String item : attribute.getType().replaceAll("(\\s+)|(.*<)|(>.*)", "").split(",")) {
+                    type = item.replaceAll("[\\[<].*", "");
+                    if (!primitiveTypes.contains(type)) associations.add(type);
+                }
             }
     }
 

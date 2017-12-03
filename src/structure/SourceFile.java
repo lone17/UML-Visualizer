@@ -86,7 +86,7 @@ public class SourceFile {
      * Local testing
      */
     public static void main(String[] args) {
-        SourceFile test = new SourceFile("E:\\Code\\OOP\\UML-Parser\\SourceFile.java");
+        SourceFile test = new SourceFile("E:\\Code\\OOP\\UML-Visualizer\\src\\GUI\\DrawPanel.java");
         for (Extendable e : test.containedExtendables)
             System.out.println(e);
     }

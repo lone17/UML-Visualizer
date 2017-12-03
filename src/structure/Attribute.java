@@ -31,7 +31,7 @@ public class Attribute extends Component {
     /**
      * Attribute Constructor
      */
-    private Attribute(String input) {
+    public Attribute(String input) {
         String[] declaration = input.trim().split("\\s+");
         int len = declaration.length;
 
@@ -41,7 +41,6 @@ public class Attribute extends Component {
         for (int i = len - 3; i >= 0; --i) {
             String cur = declaration[i];
             if (cur.equals("static")) isStatic = true;
-            else if (cur.equals("abstract")) isAbstract = true;
             else if (cur.equals("final")) isFinal = true;
             else if (modifiers.contains(cur)) accessModifier = cur;
         }
@@ -83,8 +82,5 @@ public class Attribute extends Component {
      * Local testing
      */
     public static void main(String[] args) {
-        List<Attribute> atts = Attribute.generateInstances("protected boolean isStatic = , isAbstract, isFinal = false");
-        for (Attribute a : atts)
-            System.out.println(a);
     }
 }
