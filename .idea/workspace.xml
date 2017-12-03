@@ -2,54 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="046186b8-eb6b-470b-b5c8-693e4aa7098c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Visitor$A.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/App$1.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/App$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/App.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/App.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/DrawPanel$1.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/DrawPanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/DrawPanel.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/DrawPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MainWindow.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MainWindow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$1.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$2$1.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$2$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$2.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$3.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$4.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/MenuBar.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/filter/BMPFilter.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/filter/BMPFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/filter/GIFFilter.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/filter/GIFFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/filter/JPEGFilter.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/filter/JPEGFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/filter/JPGFilter.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/filter/JPGFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/filter/PNGFilter.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/filter/PNGFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/filter/TXTFilter.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/filter/TXTFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/AttributeNode.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/AttributeNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/ClassNode.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/ClassNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/ComponentDetail.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/ComponentDetail.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/ComponentTreeCellRenderer.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/ComponentTreeCellRenderer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/InterfaceNode.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/InterfaceNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/MethodNode.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/MethodNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/ProjectNode.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/ProjectNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/TreePanel$1.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/TreePanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/TreePanel.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/GUI/tree/TreePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Attribute.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Attribute.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Class.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Class.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Component.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Component.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Directory.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Directory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Extendable.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Extendable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Method.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Method.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Parser.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Parser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Project.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Project.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/SourceFile.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/SourceFile.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Visitor$AttributeVisitor.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Visitor$AttributeVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Visitor$ConstructorVisitor.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Visitor$ConstructorVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Visitor$ExtendableVisitor.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Visitor$ExtendableVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Visitor$MethodVisitor.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Visitor$MethodVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Visitor.class" afterPath="$PROJECT_DIR$/out/production/UML-Visualizer/structure/Visitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/MenuBar.java" afterPath="$PROJECT_DIR$/src/GUI/MenuBar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/structure/Attribute.java" afterPath="$PROJECT_DIR$/src/structure/Attribute.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/structure/Class.java" afterPath="$PROJECT_DIR$/src/structure/Class.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/structure/Component.java" afterPath="$PROJECT_DIR$/src/structure/Component.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/structure/SourceFile.java" afterPath="$PROJECT_DIR$/src/structure/SourceFile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/structure/Visitor.java" afterPath="$PROJECT_DIR$/src/structure/Visitor.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/src/GUI/DrawPanel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="26" column="67" lean-forward="true" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
+              <caret line="26" column="67" lean-forward="false" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#initContent#0;class#DrawPanel#0" expanded="false" />
@@ -96,16 +49,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenuBar.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MenuBar.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUI/MenuBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="111" column="54" lean-forward="false" selection-start-line="111" selection-start-column="54" selection-end-line="111" selection-end-column="54" />
+            <state relative-caret-position="189">
+              <caret line="298" column="83" lean-forward="false" selection-start-line="298" selection-start-column="83" selection-end-line="298" selection-end-column="83" />
               <folding>
                 <element signature="e#7629#7997#0" expanded="true" />
                 <element signature="e#7996#7997#0" expanded="true" />
-                <marker date="1512314231554" expanded="false" signature="12555:12566" ph=" { " />
-                <marker date="1512314231554" expanded="false" signature="12578:12584" ph=" }" />
+                <marker date="1512319204646" expanded="false" signature="12977:12988" ph=" { " />
+                <marker date="1512319204646" expanded="false" signature="13000:13006" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -125,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/src/structure/SourceFile.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2133">
-              <caret line="87" column="44" lean-forward="true" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
+              <caret line="87" column="44" lean-forward="false" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -135,7 +88,7 @@
         <entry file="file://$PROJECT_DIR$/src/structure/Attribute.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="54">
-              <caret line="84" column="5" lean-forward="true" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+              <caret line="84" column="5" lean-forward="false" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
               <folding>
                 <element signature="e#565#576#0" expanded="true" />
               </folding>
@@ -143,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Visitor.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Visitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/structure/Visitor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1269">
-              <caret line="53" column="57" lean-forward="true" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
+              <caret line="53" column="57" lean-forward="false" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -257,16 +210,16 @@
         <option value="$PROJECT_DIR$/src/App.java" />
         <option value="$PROJECT_DIR$/src/structure/Component.java" />
         <option value="$PROJECT_DIR$/src/structure/Class.java" />
-        <option value="$PROJECT_DIR$/src/GUI/MenuBar.java" />
         <option value="$PROJECT_DIR$/src/structure/Attribute.java" />
         <option value="$PROJECT_DIR$/src/GUI/DrawPanel.java" />
         <option value="$PROJECT_DIR$/src/structure/Visitor.java" />
         <option value="$PROJECT_DIR$/src/structure/SourceFile.java" />
+        <option value="$PROJECT_DIR$/src/GUI/MenuBar.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="953" />
+    <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1087" />
   </component>
@@ -788,19 +741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/MenuBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="111" column="54" lean-forward="false" selection-start-line="111" selection-start-column="54" selection-end-line="111" selection-end-column="54" />
-          <folding>
-            <element signature="e#7629#7997#0" expanded="true" />
-            <element signature="e#7996#7997#0" expanded="true" />
-            <marker date="1512314231554" expanded="false" signature="12555:12566" ph=" { " />
-            <marker date="1512314231554" expanded="false" signature="12578:12584" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/structure/Project.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="610">
@@ -831,7 +771,7 @@
     <entry file="file://$PROJECT_DIR$/src/GUI/DrawPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="26" column="67" lean-forward="true" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
+          <caret line="26" column="67" lean-forward="false" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#initContent#0;class#DrawPanel#0" expanded="false" />
@@ -842,7 +782,7 @@
     <entry file="file://$PROJECT_DIR$/src/structure/Attribute.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
-          <caret line="84" column="5" lean-forward="true" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+          <caret line="84" column="5" lean-forward="false" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
           <folding>
             <element signature="e#565#576#0" expanded="true" />
           </folding>
@@ -852,7 +792,7 @@
     <entry file="file://$PROJECT_DIR$/src/structure/SourceFile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2133">
-          <caret line="87" column="44" lean-forward="true" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
+          <caret line="87" column="44" lean-forward="false" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -868,8 +808,21 @@
     <entry file="file://$PROJECT_DIR$/src/structure/Visitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1269">
-          <caret line="53" column="57" lean-forward="true" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
+          <caret line="53" column="57" lean-forward="false" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/MenuBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="298" column="83" lean-forward="false" selection-start-line="298" selection-start-column="83" selection-end-line="298" selection-end-column="83" />
+          <folding>
+            <element signature="e#7629#7997#0" expanded="true" />
+            <element signature="e#7996#7997#0" expanded="true" />
+            <marker date="1512319204646" expanded="false" signature="12977:12988" ph=" { " />
+            <marker date="1512319204646" expanded="false" signature="13000:13006" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -950,6 +903,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>com.github.javaparser:javaparser-core:3.5.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

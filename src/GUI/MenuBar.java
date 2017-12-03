@@ -292,9 +292,15 @@ public class MenuBar extends JMenuBar {
                         out.write(GUI.App.getProject().toString());
 
                         out.close();
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Text file saved successfully.");
+                        GUI.App.getEventHistoryPanel().append("Saved classes information as " + f.getAbsolutePath() + "\n");
+                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(),
+                                "Text file saved successfully.");
                     } catch (IOException ex) {
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Cannot save file", "Error", JOptionPane.ERROR_MESSAGE);
+                        GUI.App.getEventHistoryPanel().append("Cannot save classes information as "
+                                                                      + f.getAbsolutePath() + "\n");
+                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(),
+                                "Cannot save file",
+                                "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
