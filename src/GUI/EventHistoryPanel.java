@@ -1,6 +1,7 @@
 package GUI;
 
 import javax.swing.*;
+import javax.swing.border.MatteBorder;
 import java.awt.*;
 
 /**
@@ -23,6 +24,8 @@ public class EventHistoryPanel extends JScrollPane {
         super();
 
         textArea = new JTextArea();
+        textArea.setFont(new Font("Consolas", Font.PLAIN, 15));
+        textArea.setForeground(new Color(66, 66, 66));
         textArea.setEditable(false);
 
         setMinimumSize(new Dimension(GUI.App.getMainWindow().getWidth(), 40));
