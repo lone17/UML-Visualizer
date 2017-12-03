@@ -64,7 +64,7 @@ public class DrawPanel extends JScrollPane {
         TreeLayout layout = new TreeLayout();
         layout.setLinkStyle(TreeLayoutLinkType.Cascading2);
         layout.setLevelDistance(50);
-        layout.setNodeDistance(20);
+        layout.setNodeDistance(40);
         layout.arrange(diagram);
 
 		diagram.resizeToFitItems(10);

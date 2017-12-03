@@ -4,6 +4,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import GUI.filter.*;
+import org.jdesktop.swingx.JXSearchField;
+import org.jdesktop.swingx.JXSearchPanel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import structure.*;
 
@@ -32,7 +34,7 @@ public class MenuBar extends JMenuBar {
     private JButton loadProject; // load project button
     private JButton saveAsImage; // save as image button
     private JButton saveAsText; // save as text button
-    private JComboBox comboBox; // the search bar
+    private JComboBox searchBar; // the search bar
 
     /**
      * MenuBar private constructor
@@ -43,7 +45,23 @@ public class MenuBar extends JMenuBar {
         loadProject = new JButton("Load Project", new ImageIcon("src\\GUI\\icon\\load_project.png"));
         saveAsImage = new JButton("Save as Image", new ImageIcon("src\\GUI\\icon\\save_as_image.png"));
         saveAsText = new JButton("Save as Text", new ImageIcon("src\\GUI\\icon\\save_as_text.png"));
-        comboBox = new JComboBox();
+        searchBar = new JComboBox();
+
+//        loadProject.setMaximumSize(new Dimension(150, 30));
+//        saveAsImage.setMaximumSize(loadProject.getMaximumSize());
+//        saveAsText.setMaximumSize(loadProject.getMaximumSize());
+
+        loadProject.setMnemonic(KeyEvent.VK_L);
+        saveAsImage.setMnemonic(KeyEvent.VK_I);
+        saveAsText.setMnemonic(KeyEvent.VK_T);
+
+        loadProject.setDisplayedMnemonicIndex(0);
+        saveAsImage.setDisplayedMnemonicIndex(8);
+        saveAsText.setDisplayedMnemonicIndex(8);
+
+        loadProject.setToolTipText("Alt + L");
+        saveAsImage.setToolTipText("Alt + I");
+        saveAsText.setToolTipText("Alt + T");
 
         loadProject.setFocusPainted(false);
         saveAsImage.setFocusPainted(false);
@@ -64,10 +82,10 @@ public class MenuBar extends JMenuBar {
      */
     private void initSearchBar() {
         if (GUI.App.getProject() != null) {
-            this.remove(comboBox);
+            this.remove(searchBar);
             ArrayList<String> items = new ArrayList<>();
 
-            items.add("  Search for classes and methods");
+            items.add("");
             for (SourceFile file : GUI.App.getProject().getSourceFiles()) {
                 for (Extendable object : file.getContainedExtendables()) {
                     String name = object.getName();
@@ -78,14 +96,24 @@ public class MenuBar extends JMenuBar {
             }
             Collections.sort(items, String.CASE_INSENSITIVE_ORDER);
 
-            comboBox = new JComboBox(items.toArray());
-            comboBox.setPreferredSize(new Dimension(400, loadProject.getHeight() - 2));
-            comboBox.setMaximumSize(new Dimension(600, loadProject.getHeight() - 2));
-            comboBox.setLightWeightPopupEnabled(true);
-            comboBox.setMaximumRowCount(4);
-            comboBox.setAlignmentX(Box.RIGHT_ALIGNMENT);
-            AutoCompleteDecorator.decorate(comboBox);
-            this.add(comboBox);
+            searchBar = new JComboBox(items.toArray());
+            searchBar.setPreferredSize(new Dimension(400, loadProject.getHeight() - 2));
+            searchBar.setMaximumSize(new Dimension(600, loadProject.getHeight() - 2));
+            searchBar.setLightWeightPopupEnabled(true);
+            searchBar.setMaximumRowCount(4);
+            searchBar.setAlignmentX(Box.RIGHT_ALIGNMENT);
+            AutoCompleteDecorator.decorate(searchBar);
+            JLabel label = new JLabel();
+            label.setText("Search  ");
+            label.setAlignmentY(Box.CENTER_ALIGNMENT);
+            label.setFont(new Font("Arial", Font.ITALIC, 12));
+            label.setLabelFor(searchBar);
+            label.setDisplayedMnemonic('S');
+            label.setToolTipText("Alt + S");
+            label.setIcon(new ImageIcon("src\\GUI\\icon\\search.png"));
+            this.add(Box.createHorizontalGlue());
+            this.add(label);
+            this.add(searchBar);
             GUI.App.getDrawPanel().grabFocus();
         }
     }
@@ -147,21 +175,21 @@ public class MenuBar extends JMenuBar {
      * Add listener to listen to search event
      */
     private void addSearchListener() {
-        comboBox.addActionListener(new ActionListener() {
+        searchBar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
                 JComboBox box = (JComboBox) e.getSource();
                 String item = (String) box.getSelectedItem();
-                if (item == null || item.equals("  Search for classes and methods"))
+                if (item == null || item.equals(""))
                     return;
                 if (item.contains("|"))
                     item = item.substring(item.lastIndexOf('|') + 2, item.length());
                 GUI.App.getDrawPanel().focusOn(item);
-                comboBox.getEditor().getEditorComponent().addKeyListener(new KeyAdapter(){
+                searchBar.getEditor().getEditorComponent().addKeyListener(new KeyAdapter(){
                     @Override
                     public void keyReleased(KeyEvent event){
                         if (event.getKeyChar() == KeyEvent.VK_ENTER) {
-                            comboBox.setSelectedItem("  Search for classes and methods");
+                            searchBar.setSelectedItem("");
                             GUI.App.getDrawPanel().grabFocus();
                         }
                     }
