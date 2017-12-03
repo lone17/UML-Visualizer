@@ -33,7 +33,8 @@
     
 # Authors
  
-  - Hieu M. Vu (myself) <a href="https://github.com/lone17">Github</a> | <a href="https://www.linkedin.com/in/hieu-vu-268304142/">LinkedIn</a> | <a href="https://www.facebook.com/los.adve">Facebook</a> | 
+  - Hieu M. Vu (myself)     
+    <a href="https://github.com/lone17">GitHub</a> | <a href="https://www.linkedin.com/in/hieu-vu-268304142/">LinkedIn</a> | <a href="https://www.facebook.com/los.adve">Facebook</a>
   - Tung X. Nguyen (contributer)
   
 # Notes
