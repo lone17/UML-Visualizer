@@ -42,8 +42,17 @@ public class MenuBar extends JMenuBar{
 		super();
 
     loadProject = new JButton("Load Project", new ImageIcon("src\\icon\\load_project.png"));
+    loadProject.setMnemonic(KeyEvent.VK_L);
+    loadProject.setToolTipText("Alt + L");
+
     saveAsImage = new JButton("Save as Picture", new ImageIcon("src\\icon\\save_as_image.png"));
+    saveAsImage.setMnemonic(KeyEvent.VK_P);
+    saveAsImage.setToolTipText("Alt + P");
+
     saveAsText = new JButton("Save as Text", new ImageIcon("src\\icon\\save_as_text.png"));
+    saveAsText.setMnemonic(KeyEvent.VK_I);
+    saveAsText.setToolTipText("Alt + I");
+
 		comboBox = new JComboBox();
 
 		loadProject.setFocusPainted(false);
@@ -123,9 +132,9 @@ public class MenuBar extends JMenuBar{
 					addSearchListener();
 
 					if (App.getTreePanel().getLoadedFilesCount() > 0)
-              JOptionPane.showMessageDialog(App.getMainWindow(), "Loaded file(s): " + App.getTreePanel().getLoadedFilesCount());
-          else
-              JOptionPane.showMessageDialog(App.getMainWindow(), "No source file found", "Input error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(App.getMainWindow(), "Loaded file(s): " + App.getTreePanel().getLoadedFilesCount());
+              		else
+              		JOptionPane.showMessageDialog(App.getMainWindow(), "No source file found", "Input error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -240,7 +249,7 @@ public class MenuBar extends JMenuBar{
 
               out.close();
               JOptionPane.showMessageDialog(App.getMainWindow(), "Text file saved successfully");
-          } catch (IOException ex) {
+         	 	} catch (IOException ex) {
               System.out.println(ex);
               JOptionPane.showMessageDialog(App.getMainWindow(), "Save error", "Save error", JOptionPane.ERROR_MESSAGE);
           }
