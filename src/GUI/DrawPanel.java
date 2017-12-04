@@ -51,7 +51,7 @@ public class DrawPanel extends JScrollPane {
 
 		configDiagram();
 
-		addAssociationRelationship();
+		addAssociationRelation();
 
 		addZoomListener();
 	}
@@ -62,7 +62,7 @@ public class DrawPanel extends JScrollPane {
 	private void configDiagram() {
 
         TreeLayout layout = new TreeLayout();
-        layout.setLinkStyle(TreeLayoutLinkType.Cascading2);
+        layout.setLinkStyle(TreeLayoutLinkType.Straight);
         layout.setLevelDistance(50);
         layout.setNodeDistance(40);
         layout.arrange(diagram);
@@ -85,7 +85,7 @@ public class DrawPanel extends JScrollPane {
 		diagram.setSelectAfterCreate(false);
 		diagram.setFont(new Font("Arial", Font.PLAIN, 5));
 		diagram.setEnableLanes(true);
-		diagram.setLinkRouter(new GridRouter());
+		diagram.setLinkRouter(new QuickRouter(diagram));
 		diagram.setLinkCrossings(LinkCrossings.Cut);
 	    diagramView.setZoomFactor(60);
 
@@ -180,7 +180,7 @@ public class DrawPanel extends JScrollPane {
         /**
          * Initial links represent inheritance relationship between ContainerNodes
          */
-    private void addAssociationRelationship() {
+    private void addAssociationRelation() {
 
         DiagramNode parent, child;
         for (SourceFile file : GUI.App.getProject().getSourceFiles()) {

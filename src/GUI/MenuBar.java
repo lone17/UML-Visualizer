@@ -4,8 +4,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import GUI.filter.*;
-import org.jdesktop.swingx.JXSearchField;
-import org.jdesktop.swingx.JXSearchPanel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import structure.*;
 
@@ -50,10 +48,6 @@ public class MenuBar extends JMenuBar {
         saveAsText = new JButton("Save as Text", new ImageIcon("src\\GUI\\icon\\save_as_text.png"));
         searchLabel = new JLabel();
         searchBar = new JComboBox();
-
-//        loadProject.setMaximumSize(new Dimension(150, 30));
-//        saveAsImage.setMaximumSize(loadProject.getMaximumSize());
-//        saveAsText.setMaximumSize(loadProject.getMaximumSize());
 
         loadProject.setMnemonic(KeyEvent.VK_L);
         saveAsImage.setMnemonic(KeyEvent.VK_I);
@@ -108,12 +102,9 @@ public class MenuBar extends JMenuBar {
             searchBar.setMaximumSize(new Dimension(600, loadProject.getHeight() - 2));
             searchBar.setLightWeightPopupEnabled(true);
             searchBar.setMaximumRowCount(4);
-//            searchBar.setAlignmentX(Box.RIGHT_ALIGNMENT);
             AutoCompleteDecorator.decorate(searchBar);
 
             searchLabel = new JLabel("Search  ");
-//            searchLabel.setAlignmentY(Box.CENTER_ALIGNMENT);
-//            searchLabel.setAlignmentX(Box.RIGHT_ALIGNMENT);
             searchLabel.setFont(new Font("Arial", Font.ITALIC, 12));
             searchLabel.setLabelFor(searchBar);
             searchLabel.setDisplayedMnemonic('S');
