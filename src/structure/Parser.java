@@ -20,7 +20,7 @@ public class Parser {
 
         int begin = input.indexOf("{");
         int end = input.lastIndexOf("}");
-        input = input.substring(0, begin) + ";" + input.substring(begin+1, end);
+        input = input.substring(0, begin) + ";" + input.substring(begin + 1, end);
 
         while (input.contains("{"))
             input = input.replaceAll("\\{[^{^}]*\\};*", ";");
@@ -44,11 +44,11 @@ public class Parser {
     }
 
     /**
-    * Remove all quoted string in the text
-    *
-    * @param input the text to be processed
-    * @return the processed text
-    */
+     * Remove all quoted string in the text
+     *
+     * @param input the text to be processed
+     * @return the processed text
+     */
     public static String removeQuote(String input) {
         input = input.replace("\\\"", "");
         input = input.replaceAll("([\"'])[^\1]*?\\1", "");
@@ -66,18 +66,17 @@ public class Parser {
         res[0] = res[0].trim();
         if (res[1].matches(".*[^)].*"))
             res[1] = res[1].split("\\)")[0].trim().replace(",", " ");
-        else
-            res[1] = "";
+        else res[1] = "";
 
         return res;
     }
 
     /**
-    * Extracts a class declaration from a text
-    *
-    * @param input the text to be processed
-    * @return an array of String contains parts of a class declaration
-    */
+     * Extracts a class declaration from a text
+     *
+     * @param input the text to be processed
+     * @return an array of String contains parts of a class declaration
+     */
     public static String[] getClassDeclaration(String input) {
         String[] res = new String[3];
         String[] tmp = input.split("\\{")[0].replaceAll("(\\bextends\\b)|(\\bimplements\\b)", "-").split("-");
@@ -85,10 +84,8 @@ public class Parser {
         if (tmp.length == 1) return res;
 
         if (tmp.length == 2)
-            if (input.matches(".+ extends .+"))
-                res[1] = tmp[1].trim();
-            else
-                res[2] = tmp[1].trim().replace(",", " ");
+            if (input.matches(".+ extends .+")) res[1] = tmp[1].trim();
+            else res[2] = tmp[1].trim().replace(",", " ");
         else {
             res[1] = tmp[1].trim();
             res[2] = tmp[2].trim().replace(",", " ");
@@ -98,27 +95,26 @@ public class Parser {
     }
 
     /**
-    * Extracts a interface declaration from a text
-    *
-    * @param input the text to be processed
-    * @return an array of String contains parts of a interface declaration
-    */
+     * Extracts a interface declaration from a text
+     *
+     * @param input the text to be processed
+     * @return an array of String contains parts of a interface declaration
+     */
     public static String[] getInterfaceDeclaration(String input) {
         String[] res = new String[2];
         String[] tmp = removeComment(input).split("extends");
         res[0] = tmp[0].trim();
-        if (tmp.length > 1)
-            res[1] = tmp[1].replace(",", " ").trim();
+        if (tmp.length > 1) res[1] = tmp[1].replace(",", " ").trim();
 
         return res;
     }
 
     /**
-    * Extracts a attribute declaration from a text
-    *
-    * @param input the text to be processed
-    * @return an array of String contains parts of a attribute declaration
-    */
+     * Extracts a attribute declaration from a text
+     *
+     * @param input the text to be processed
+     * @return an array of String contains parts of a attribute declaration
+     */
     public static String[] getAttributeDeclaration(String input) {
         input = input.split("\\(")[0];
 

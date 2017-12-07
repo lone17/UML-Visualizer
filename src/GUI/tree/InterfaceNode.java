@@ -19,7 +19,7 @@ public class InterfaceNode extends DefaultMutableTreeNode {
      * @param aInterface Class object
      */
     public InterfaceNode(Interface aInterface) {
-        super(new ComponentDetail(aInterface.getName(), "Icon\\interface.png"));
+        super(new ComponentDetail(aInterface.getName(), "icon\\interface.png"));
 
         DefaultMutableTreeNode attributes = new DefaultMutableTreeNode("Attributes:");
         DefaultMutableTreeNode methods = new DefaultMutableTreeNode("Methods:");

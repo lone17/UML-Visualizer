@@ -9,14 +9,13 @@ import javax.swing.tree.DefaultMutableTreeNode;
  *
  * @author Nguyen Xuan Tung
  */
-public class AttributeNode extends DefaultMutableTreeNode{
+public class AttributeNode extends DefaultMutableTreeNode {
     /**
      * Constructor use an Attribute object from Parser to create a tree node
      *
      * @param attribute Attribute object
      */
     public AttributeNode(Attribute attribute) {
-        super(new ComponentDetail(attribute.presentation(), "Icon\\Attribute\\"
-                                                       + attribute.getAccessModifier() + ".png"));
+        super(new ComponentDetail(attribute.presentation(), "icon\\Attribute\\" + attribute.getAccessModifier() + ".png"));
     }
 }

@@ -3,7 +3,7 @@ package structure;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
 
-import java.util.*;
+import java.util.LinkedList;
 
 /**
  * Class Interface represents an interface
@@ -24,12 +24,9 @@ public class Interface extends Extendable {
         type = "class";
         name = declaration.getNameAsString();
 
-        if (declaration.isPublic())
-            accessModifier = "public";
-        else if (declaration.isProtected())
-            accessModifier = "protected";
-        else if (declaration.isPrivate())
-            accessModifier = "private";
+        if (declaration.isPublic()) accessModifier = "public";
+        else if (declaration.isProtected()) accessModifier = "protected";
+        else if (declaration.isPrivate()) accessModifier = "private";
 
         for (ClassOrInterfaceType item : declaration.getExtendedTypes())
             baseInterfaces.add(item.getName().toString());
@@ -39,11 +36,18 @@ public class Interface extends Extendable {
 
     }
 
-	/**
-	 * @return a string representation of Interface for printing
-	 */
-	@Override
-	public String toString() {
+    /**
+     * Local testing
+     */
+    public static void main(String[] args) {
+
+    }
+
+    /**
+     * @return a string representation of Interface for printing
+     */
+    @Override
+    public String toString() {
 
         String s = "";
         if (!accessModifier.equals("default")) s += accessModifier + " ";
@@ -61,12 +65,5 @@ public class Interface extends Extendable {
             s += item.toString() + "\n";
 
         return s;
-	}
-
-    /**
-     * Local testing
-     */
-    public static void main(String[] args) {
-
     }
 }

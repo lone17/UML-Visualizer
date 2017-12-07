@@ -17,8 +17,7 @@ public class MethodNode extends DefaultMutableTreeNode {
      * @param method Method object
      */
     public MethodNode(Method method) {
-        super(new ComponentDetail(method.presentation(), "Icon\\Method\\"
-                + method.getAccessModifier() + ".png"));
+        super(new ComponentDetail(method.presentation(), "icon\\Method\\" + method.getAccessModifier() + ".png"));
     }
 
 }

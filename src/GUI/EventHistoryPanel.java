@@ -1,7 +1,6 @@
 package GUI;
 
 import javax.swing.*;
-import javax.swing.border.MatteBorder;
 import java.awt.*;
 
 /**
@@ -35,20 +34,20 @@ public class EventHistoryPanel extends JScrollPane {
     }
 
     /**
-     * append text to the text area
-     *
-     * @param content the text content to be added
-     */
-    public void append(String content) {
-        textArea.append(content);
-    }
-
-    /**
      * Get the single EventHistoryPanel instance
      *
      * @return the single EventHistoryPanel instance
      */
     public static EventHistoryPanel getInstance() {
         return historyPanel;
+    }
+
+    /**
+     * append text to the text area
+     *
+     * @param content the text content to be added
+     */
+    public void append(String content) {
+        textArea.append(content);
     }
 }

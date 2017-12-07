@@ -1,10 +1,12 @@
 package structure;
 
-import java.io.*;
-import java.util.LinkedList;
-
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.LinkedList;
 
 /**
  * Class SourceFile represents a source file
@@ -43,7 +45,7 @@ public class SourceFile {
      * SourceFile Constructor that takes an InputStream and a file path
      *
      * @param stream an InputStream to be read
-     * @param path the path to a source file
+     * @param path   the path to a source file
      */
     public SourceFile(InputStream stream, String path) {
         this.path = path;
@@ -53,6 +55,15 @@ public class SourceFile {
 
         containedExtendables = new LinkedList<>();
         (new Visitor.ExtendableVisitor()).visit(cu, containedExtendables);
+    }
+
+    /**
+     * Local testing
+     */
+    public static void main(String[] args) {
+        SourceFile test = new SourceFile("E:\\Code\\OOP\\UML-Visualizer\\src\\GUI\\DrawPanel.java");
+        for (Extendable e : test.containedExtendables)
+            System.out.println(e);
     }
 
     /**
@@ -80,14 +91,5 @@ public class SourceFile {
      */
     public LinkedList<Extendable> getContainedExtendables() {
         return containedExtendables;
-    }
-
-    /**
-     * Local testing
-     */
-    public static void main(String[] args) {
-        SourceFile test = new SourceFile("E:\\Code\\OOP\\UML-Visualizer\\src\\GUI\\DrawPanel.java");
-        for (Extendable e : test.containedExtendables)
-            System.out.println(e);
     }
 }

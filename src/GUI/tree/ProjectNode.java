@@ -1,14 +1,10 @@
 package GUI.tree;
 
-import structure.Interface;
-import structure.Extendable;
-import structure.Project;
-import structure.SourceFile;
 import structure.Class;
+import structure.*;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
  * Represent project node in the tree
@@ -23,7 +19,7 @@ public class ProjectNode extends DefaultMutableTreeNode {
      * @param project Project object
      */
     public ProjectNode(Project project) {
-        super(new ComponentDetail(project.getName(), "Icon\\root.png"));
+        super(new ComponentDetail(project.getName(), "icon\\root.png"));
 
         ArrayList<SourceFile> sourceFiles = project.getSourceFiles();
 
@@ -31,8 +27,7 @@ public class ProjectNode extends DefaultMutableTreeNode {
             for (Extendable object : file.getContainedExtendables())
                 if (object instanceof Class)
                     this.add(new ClassNode((Class) object));
-                else
-                    this.add(new InterfaceNode((Interface) object));
+                else this.add(new InterfaceNode((Interface) object));
         }
     }
 }

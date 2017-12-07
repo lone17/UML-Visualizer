@@ -15,20 +15,20 @@ public class JPEGFilter extends FileFilter {
      *
      * @param f the file to checked for filter constrain
      * @return true if the file f is a jpeg file
-     *         false otherwise
+     * false otherwise
      */
-	public boolean accept(File f) {
-		if (f.isDirectory()) return true;
-		String name = f.getName();
-		return name.endsWith(".jpeg") || name.endsWith(".JPEG");
-	}
+    public boolean accept(File f) {
+        if (f.isDirectory()) return true;
+        String name = f.getName();
+        return name.endsWith(".jpeg") || name.endsWith(".JPEG");
+    }
 
-	/**
-	 * Get the description of this filter
-	 *
-	 * @return a String represents the description
-	 */
-	public String getDescription() {
-		return "*.jpeg, *.JPEG";
-	}
+    /**
+     * Get the description of this filter
+     *
+     * @return a String represents the description
+     */
+    public String getDescription() {
+        return "*.jpeg, *.JPEG";
+    }
 }

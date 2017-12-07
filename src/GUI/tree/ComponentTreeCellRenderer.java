@@ -27,9 +27,7 @@ public class ComponentTreeCellRenderer implements TreeCellRenderer {
      * Set up
      */
     @Override
-    public Component getTreeCellRendererComponent(JTree tree, Object value,
-                                                  boolean selected, boolean expanded,
-                                                  boolean leaf, int row, boolean hasFocus) {
+    public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
         Object o = ((DefaultMutableTreeNode) value).getUserObject();
         if (o instanceof ComponentDetail) {
             ComponentDetail methodDetail = (ComponentDetail) o;

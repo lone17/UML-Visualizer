@@ -11,30 +11,30 @@ import javax.swing.tree.DefaultMutableTreeNode;
  *
  * @author Nguyen Xuan Tung
  */
-public class ClassNode extends DefaultMutableTreeNode{
+public class ClassNode extends DefaultMutableTreeNode {
 
-	/**
-	 * ClassNode Constructor
-	 *
-	 * @param aClass Class object to be shown in the node
-	 */
-	public ClassNode(Class aClass){
-		super(new ComponentDetail(aClass.getName(), "Icon\\" + (aClass.isAbstract() ? "abstractClass.png" : "class.png")));
+    /**
+     * ClassNode Constructor
+     *
+     * @param aClass Class object to be shown in the node
+     */
+    public ClassNode(Class aClass) {
+        super(new ComponentDetail(aClass.getName(), "icon\\" + (aClass.isAbstract() ? "abstractClass.png" : "class.png")));
 
-		DefaultMutableTreeNode attributes = new DefaultMutableTreeNode("Attributes:");
-		DefaultMutableTreeNode methods = new DefaultMutableTreeNode("Methods:");
+        DefaultMutableTreeNode attributes = new DefaultMutableTreeNode("Attributes:");
+        DefaultMutableTreeNode methods = new DefaultMutableTreeNode("Methods:");
 
-		for (Attribute attribute : aClass.getAttributes()) {
-			attributes.add(new AttributeNode(attribute));
-		}
+        for (Attribute attribute : aClass.getAttributes()) {
+            attributes.add(new AttributeNode(attribute));
+        }
 
-		for (Method method : aClass.getMethods()) {
-			methods.add(new MethodNode(method));
-		}
+        for (Method method : aClass.getMethods()) {
+            methods.add(new MethodNode(method));
+        }
 
-		this.add(attributes);
-		this.add(methods);
-	}
+        this.add(attributes);
+        this.add(methods);
+    }
 
 
 }

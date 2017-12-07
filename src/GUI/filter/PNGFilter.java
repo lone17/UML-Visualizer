@@ -15,20 +15,20 @@ public class PNGFilter extends FileFilter {
      *
      * @param f the file to checked for filter constrain
      * @return true if the file f is a png file
-     *         false otherwise
+     * false otherwise
      */
-	public boolean accept(File f) {
-		if (f.isDirectory()) return true;
-		String name = f.getName();
-		return name.endsWith(".png") || name.endsWith(".PNG");
-	}
+    public boolean accept(File f) {
+        if (f.isDirectory()) return true;
+        String name = f.getName();
+        return name.endsWith(".png") || name.endsWith(".PNG");
+    }
 
-	/**
-	 * Get the description of this filter
-	 *
-	 * @return a String represents the description
-	 */
-	public String getDescription() {
-		return "*.png, *.PNG";
-	}
+    /**
+     * Get the description of this filter
+     *
+     * @return a String represents the description
+     */
+    public String getDescription() {
+        return "*.png, *.PNG";
+    }
 }

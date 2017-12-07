@@ -15,20 +15,6 @@ import java.util.List;
  */
 public class Visitor {
 
-    public static class ExtendableVisitor extends VoidVisitorAdapter<List<Extendable>> {
-        @Override
-        public void visit(ClassOrInterfaceDeclaration declaration, List<Extendable> list) {
-            super.visit(declaration, list);
-            Extendable object;
-            if (declaration.isInterface()) object = new Interface(declaration);
-            else object = new Class(declaration);
-
-            Visitor.getAllMethodsAndAttributes(declaration, object);
-
-            list.add(object);
-        }
-    }
-
     /**
      * Get all methods and attributes in a ClassOrInterfaceDeclaration node
      *
@@ -51,15 +37,27 @@ public class Visitor {
                 if (attribute.isFinal()) tmp += "final ";
 
                 for (VariableDeclarator item : attribute.getVariables()) {
-                    object.addAttribute(new Attribute(tmp
-                                                    + item.getType().toString().replace(" ","") + " "
-                                                    + item.getName().toString()));
+                    object.addAttribute(new Attribute(tmp + item.getType().toString().replace(" ", "") + " " + item.getName().toString()));
                 }
 
             } else if (node instanceof MethodDeclaration) {
                 MethodDeclaration method = (MethodDeclaration) node;
                 object.addMethod(new Method(method.getDeclarationAsString(true, false, true)));
             }
+    }
+
+    public static class ExtendableVisitor extends VoidVisitorAdapter<List<Extendable>> {
+        @Override
+        public void visit(ClassOrInterfaceDeclaration declaration, List<Extendable> list) {
+            super.visit(declaration, list);
+            Extendable object;
+            if (declaration.isInterface()) object = new Interface(declaration);
+            else object = new Class(declaration);
+
+            Visitor.getAllMethodsAndAttributes(declaration, object);
+
+            list.add(object);
+        }
     }
 
     /**

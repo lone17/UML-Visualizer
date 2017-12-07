@@ -11,9 +11,9 @@ import java.util.Scanner;
  */
 public class Directory {
 
-    protected File self; // the directory itself
     protected final LinkedList<Directory> subDirectories; // all subdirectories
     protected final LinkedList<String> allSourceFilePaths; // all source files path
+    protected File self; // the directory itself
 
     /**
      * Constructor
@@ -27,6 +27,22 @@ public class Directory {
         setSubDirectories();
         allSourceFilePaths = new LinkedList<String>();
         setAllSourceFilePaths();
+    }
+
+    /*
+     * Local testing
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Directory dir = null;
+
+        if (args.length != 0) dir = new Directory(args[0]);
+        else
+            dir = new Directory("E:\\Code\\OOP\\UML-Visualizer\\Attribute.java");
+
+        for (String s : dir.getAllSourceFilePaths())
+            System.out.println(s);
     }
 
     /**
@@ -53,7 +69,6 @@ public class Directory {
         for (Directory dir : subDirectories)
             allSourceFilePaths.addAll(dir.allSourceFilePaths);
     }
-
 
     /**
      * Return the name of the Directory
@@ -107,21 +122,5 @@ public class Directory {
             for (Directory dir : subDirectories)
                 dir.printContent(level + 1);
         }
-    }
-
-    /*
-     * Local testing
-     */
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        Directory dir = null;
-
-        if (args.length != 0) dir = new Directory(args[0]);
-        else
-            dir = new Directory("E:\\Code\\OOP\\UML-Visualizer\\Attribute.java");
-
-        for (String s : dir.getAllSourceFilePaths())
-            System.out.println(s);
     }
 }

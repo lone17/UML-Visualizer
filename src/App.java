@@ -1,6 +1,6 @@
 package GUI;
 
-import GUI.tree.*;
+import GUI.tree.TreePanel;
 import structure.Project;
 
 import javax.swing.*;
@@ -101,7 +101,7 @@ public class App {
      * @param args command line arguments
      */
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable(){
+        SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 App.run();

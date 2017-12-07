@@ -1,6 +1,7 @@
 package structure;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * class Component represents a component

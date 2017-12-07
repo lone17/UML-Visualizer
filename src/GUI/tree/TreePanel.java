@@ -22,7 +22,7 @@ public class TreePanel extends JScrollPane {
      */
     public TreePanel() {
         super();
-        initContent(new DefaultMutableTreeNode(new ComponentDetail("Empty", "Icon\\root.png")));
+        initContent(new DefaultMutableTreeNode(new ComponentDetail("Empty", "icon\\root.png")));
     }
 
     /**

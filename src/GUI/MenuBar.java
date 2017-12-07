@@ -1,14 +1,15 @@
 package GUI;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-
 import GUI.filter.*;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
-import structure.*;
+import structure.Extendable;
+import structure.Method;
+import structure.Project;
+import structure.SourceFile;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -76,6 +77,15 @@ public class MenuBar extends JMenuBar {
     }
 
     /**
+     * Get the single MenuBar instance
+     *
+     * @return the single MenuBar instance
+     */
+    public static MenuBar getInstance() {
+        return menu;
+    }
+
+    /**
      * Initial search bar's components
      */
     private void initSearchBar() {
@@ -122,7 +132,7 @@ public class MenuBar extends JMenuBar {
     /**
      * Add listener to listen to load event
      */
-    private void addLoadListener(){
+    private void addLoadListener() {
         loadProject.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -139,12 +149,8 @@ public class MenuBar extends JMenuBar {
                     GUI.App.setProject(new Project(selectedPath));
 
                     if (GUI.App.getProject().getSourceFileCount() == 0) {
-                        GUI.App.getEventHistoryPanel().append("No source file was found in " + selectedPath +"\n");
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(),
-                                "The path you have chosen does not contain any source file.\n" +
-                                        "Please pick another.",
-                                "Error",
-                                JOptionPane.ERROR_MESSAGE);
+                        GUI.App.getEventHistoryPanel().append("No source file was found in " + selectedPath + "\n");
+                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "The path you have chosen does not contain any source file.\n" + "Please pick another.", "Error", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
 
@@ -164,11 +170,8 @@ public class MenuBar extends JMenuBar {
                     initSearchBar();
                     addSearchListener();
 
-                    GUI.App.getEventHistoryPanel().append("Loaded "
-                                                              + GUI.App.getProject().getSourceFileCount()
-                                                              + " file(s) from " + selectedPath + "\n");
-                    JOptionPane.showMessageDialog(GUI.App.getMainWindow(),
-                            "Loaded file(s): " + GUI.App.getProject().getSourceFileCount());
+                    GUI.App.getEventHistoryPanel().append("Loaded " + GUI.App.getProject().getSourceFileCount() + " file(s) from " + selectedPath + "\n");
+                    JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Loaded file(s): " + GUI.App.getProject().getSourceFileCount());
                 }
             }
         });
@@ -180,17 +183,16 @@ public class MenuBar extends JMenuBar {
     private void addSearchListener() {
         searchBar.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 JComboBox box = (JComboBox) e.getSource();
                 String item = (String) box.getSelectedItem();
-                if (item == null || item.equals(""))
-                    return;
+                if (item == null || item.equals("")) return;
                 if (item.contains("|"))
                     item = item.substring(item.lastIndexOf('|') + 2, item.length());
                 GUI.App.getDrawPanel().focusOn(item);
-                searchBar.getEditor().getEditorComponent().addKeyListener(new KeyAdapter(){
+                searchBar.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
                     @Override
-                    public void keyReleased(KeyEvent event){
+                    public void keyReleased(KeyEvent event) {
                         if (event.getKeyChar() == KeyEvent.VK_ENTER) {
                             searchBar.setSelectedItem("");
                             GUI.App.getDrawPanel().grabFocus();
@@ -207,7 +209,7 @@ public class MenuBar extends JMenuBar {
     private void addSaveAsImageListener() {
         saveAsImage.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 JFileChooser chooser = new JFileChooser(new java.io.File("."));
 
                 chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
@@ -240,14 +242,11 @@ public class MenuBar extends JMenuBar {
                     try {
                         ImageIO.write(img, ext, f);
                         GUI.App.getEventHistoryPanel().append("Saved image as " + f.getAbsolutePath() + "\n");
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(),
-                                "Image saved successfully.");
+                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Image saved successfully.");
                     } catch (IOException ex) {
                         ex.printStackTrace();
                         GUI.App.getEventHistoryPanel().append("Cannot save image as " + f.getAbsolutePath() + "\n");
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(),
-                                "Cannot save Image.", "Error",
-                                JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Cannot save Image.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -260,7 +259,7 @@ public class MenuBar extends JMenuBar {
     private void addSaveAsTextListener() {
         saveAsText.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 JFileChooser chooser = new JFileChooser(new java.io.File("."));
 
                 chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
@@ -284,26 +283,13 @@ public class MenuBar extends JMenuBar {
 
                         out.close();
                         GUI.App.getEventHistoryPanel().append("Saved classes information as " + f.getAbsolutePath() + "\n");
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(),
-                                "Text file saved successfully.");
+                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Text file saved successfully.");
                     } catch (IOException ex) {
-                        GUI.App.getEventHistoryPanel().append("Cannot save classes information as "
-                                                                      + f.getAbsolutePath() + "\n");
-                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(),
-                                "Cannot save file",
-                                "Error", JOptionPane.ERROR_MESSAGE);
+                        GUI.App.getEventHistoryPanel().append("Cannot save classes information as " + f.getAbsolutePath() + "\n");
+                        JOptionPane.showMessageDialog(GUI.App.getMainWindow(), "Cannot save file", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
         });
-    }
-
-    /**
-     * Get the single MenuBar instance
-     *
-     * @return the single MenuBar instance
-     */
-    public static MenuBar getInstance() {
-        return menu;
     }
 }

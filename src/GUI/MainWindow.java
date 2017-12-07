@@ -11,13 +11,12 @@ import java.awt.*;
  */
 public class MainWindow extends JFrame {
 
+    // the single MainWindow instance
+    private static MainWindow window = new MainWindow();
     // the horizontal splitter
     private JSplitPane horizontalSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
     // the vertical splitter
     private JSplitPane verticalSplitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-
-    // the single MainWindow instance
-    private static MainWindow window = new MainWindow();
 
     /**
      * private MainWindow constructor
@@ -43,6 +42,15 @@ public class MainWindow extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+    }
+
+    /**
+     * Get the single MainWindow instance
+     *
+     * @return the single MainWindow instance
+     */
+    public static MainWindow getInstance() {
+        return window;
     }
 
     /**
@@ -79,14 +87,5 @@ public class MainWindow extends JFrame {
      */
     public void setRight(JComponent component) {
         verticalSplitter.setRightComponent(component);
-    }
-
-    /**
-     * Get the single MainWindow instance
-     *
-     * @return the single MainWindow instance
-     */
-    public static MainWindow getInstance() {
-        return window;
     }
 }

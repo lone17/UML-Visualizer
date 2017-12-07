@@ -1,6 +1,6 @@
 package structure;
 
-import java.util.*;
+import java.util.LinkedList;
 
 /**
  * class Attribute represents a class's attribute
@@ -8,6 +8,24 @@ import java.util.*;
  * @author Vu Minh Hieu
  */
 public class Attribute extends Component {
+
+    /**
+     * Attribute Constructor
+     */
+    public Attribute(String input) {
+        String[] declaration = input.trim().split("\\s+");
+        int len = declaration.length;
+
+        name = declaration[len - 1];
+        type = declaration[len - 2];
+
+        for (int i = len - 3; i >= 0; --i) {
+            String cur = declaration[i];
+            if (cur.equals("static")) isStatic = true;
+            else if (cur.equals("final")) isFinal = true;
+            else if (modifiers.contains(cur)) accessModifier = cur;
+        }
+    }
 
     /**
      * Generate a list of instances from a attribute input
@@ -29,21 +47,9 @@ public class Attribute extends Component {
     }
 
     /**
-     * Attribute Constructor
+     * Local testing
      */
-    public Attribute(String input) {
-        String[] declaration = input.trim().split("\\s+");
-        int len = declaration.length;
-
-        name = declaration[len - 1];
-        type = declaration[len - 2];
-
-        for (int i = len - 3; i >= 0; --i) {
-            String cur = declaration[i];
-            if (cur.equals("static")) isStatic = true;
-            else if (cur.equals("final")) isFinal = true;
-            else if (modifiers.contains(cur)) accessModifier = cur;
-        }
+    public static void main(String[] args) {
     }
 
     /**
@@ -76,11 +82,5 @@ public class Attribute extends Component {
         if (type != null) s += type + " ";
 
         return s + name;
-    }
-
-    /**
-     * Local testing
-     */
-    public static void main(String[] args) {
     }
 }

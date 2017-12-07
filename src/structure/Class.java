@@ -3,7 +3,10 @@ package structure;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Class Component represents a component
@@ -13,8 +16,7 @@ import java.util.*;
 public class Class extends Extendable {
 
     // list of primitive types
-    private static final List<String> primitiveTypes = Arrays.asList("int", "boolean", "double", "char",
-            "long", "float", "short", "byte");
+    private static final List<String> primitiveTypes = Arrays.asList("int", "boolean", "double", "char", "long", "float", "short", "byte");
 
     private HashSet<String> associations; // all association components
 
@@ -40,6 +42,12 @@ public class Class extends Extendable {
 
         for (ClassOrInterfaceType item : declaration.getImplementedTypes())
             baseInterfaces.add(item.getName().toString());
+    }
+
+    /**
+     * Local testing
+     */
+    public static void main(String[] args) {
     }
 
     /**
@@ -123,11 +131,5 @@ public class Class extends Extendable {
             s += item.toString() + "\n";
 
         return s;
-    }
-
-    /**
-     * Local testing
-     */
-    public static void main(String[] args) {
     }
 }

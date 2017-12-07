@@ -1,7 +1,10 @@
 package structure;
 
-import java.util.*;
-import java.io.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -26,26 +29,46 @@ public class Project extends Directory {
         if (!path.endsWith(".zip")) {
             for (String filePath : allSourceFilePaths)
                 sourceFiles.add(new SourceFile(filePath));
-        }
-        else try {
+        } else try {
             ZipFile file = new ZipFile(path);
             Enumeration<? extends ZipEntry> entries = file.entries();
             while (entries.hasMoreElements()) {
                 ZipEntry entry = entries.nextElement();
                 if (entry.getName().endsWith(".java"))
-                    sourceFiles.add(new SourceFile(file.getInputStream(entry),
-                                                          file.getName() + "\\" + entry.getName()));
+                    sourceFiles.add(new SourceFile(file.getInputStream(entry), file.getName() + "\\" + entry.getName()));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Collections.sort(sourceFiles, new Comparator<SourceFile>(){
+        Collections.sort(sourceFiles, new Comparator<SourceFile>() {
             @Override
-            public int compare(SourceFile f1, SourceFile f2){
+            public int compare(SourceFile f1, SourceFile f2) {
                 return f1.getName().compareTo(f2.getName());
             }
         });
+    }
+
+    /**
+     * Local testing
+     */
+    public static void main(String[] args) {
+        Project uml;
+        if (args.length != 0) uml = new Project(args[0]);
+        else uml = new Project("E:\\Code\\OOP\\UML-Visualizer\\src\\structure");
+
+        //        try {
+        //            FileWriter writer = new FileWriter("C:\\Users\\Vu Minh Hieu\\Desktop\\file1.txt");
+        //            BufferedWriter out = new BufferedWriter(writer);
+        //
+        //            out.append(uml.toString());
+        //
+        //            out.close();
+        //        } catch(IOException e) {
+        //            System.out.println(e);
+        //        }
+
+        System.out.println(uml);
     }
 
     /**
@@ -82,29 +105,5 @@ public class Project extends Directory {
         }
 
         return s;
-    }
-
-    /**
-     * Local testing
-     */
-    public static void main(String[] args) {
-        Project uml;
-        if (args.length != 0)
-            uml = new Project(args[0]);
-        else
-            uml = new Project("E:\\Code\\OOP\\UML-Visualizer\\src\\structure");
-
-//        try {
-//            FileWriter writer = new FileWriter("C:\\Users\\Vu Minh Hieu\\Desktop\\file1.txt");
-//            BufferedWriter out = new BufferedWriter(writer);
-//
-//            out.append(uml.toString());
-//
-//            out.close();
-//        } catch(IOException e) {
-//            System.out.println(e);
-//        }
-
-        System.out.println(uml);
     }
 }
