@@ -11,6 +11,11 @@
   - Dynamic diagram searching
   - Support zooming and moving diagrams
   
+# Getting started
+
+  - If you are a user: Just run the UML-Visualizer.jar file with JVM
+  - If you are a developer: Clone the project and add it to you IDE of choice. All dependencies are included in the /lib directory. Just add them to your IDE, no downloading needed.
+  
 # Screenshots
 
   <img src="https://raw.githubusercontent.com/lone17/UML-Visualizer/master/screenshots/Picture1.png">
